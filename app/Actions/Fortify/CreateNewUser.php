@@ -21,16 +21,20 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input)
     {
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'student_id' => ['required', 'digits:8', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'regex:/unistra\.fr$/i', 'unique:users'],
             'password' => $this->passwordRules(),
+            'email_notifications' => [],
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 
+        $input['email_notifications'] = array_key_exists('email_notifications', $input)  ? true : false;
+
         return User::create([
-            'name' => $input['name'],
+            'student_id' => $input['student_id'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
+            'email_notifications' => $input['email_notifications'],
         ]);
     }
 }
