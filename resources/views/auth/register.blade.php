@@ -10,13 +10,13 @@
             @csrf
 
             <div>
-                <x-jet-label for="student_id" value="{{ __('Numéro étudiant') }}" />
+                <x-jet-label for="student_id" value="{{ __('Student ID') }}" />
                 <x-jet-input id="student_id" class="block mt-1 w-full" type="number" name="student_id" :value="old('student_id')" minlength="8" maxlength="8" placeholder="12345678" required autofocus autocomplete="student_id" />
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="email" value="{{ __('Email Unistra') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" placeholder="etudiant@etu.unistra.fr" required />
+                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" placeholder="{{ __('student@etu.unistra.fr') }}" required />
             </div>
 
             <div class="mt-4">
