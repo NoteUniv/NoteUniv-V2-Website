@@ -23,8 +23,8 @@ class CreateNewUser implements CreatesNewUsers
         Validator::make($input, [
             'student_id' => ['required', 'digits:8', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'regex:/unistra\.fr$/i', 'unique:users'],
-            'password' => $this->passwordRules(),
             'email_notifications' => [],
+            'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 
@@ -32,9 +32,10 @@ class CreateNewUser implements CreatesNewUsers
 
         return User::create([
             'student_id' => $input['student_id'],
+            'is_admin' => false,
             'email' => $input['email'],
-            'password' => Hash::make($input['password']),
             'email_notifications' => $input['email_notifications'],
+            'password' => Hash::make($input['password']),
         ]);
     }
 }
