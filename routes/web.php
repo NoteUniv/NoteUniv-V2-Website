@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,21 +15,30 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // If user session is logged in, redirect to dashboard
-    if (session()->has('_token')) {
-        return redirect('/dashboard');
+    // If user session is logged in, redirect to dashboard or dashboard-admin
+    if (Auth::check()) {
+        if (Auth::user()->isAdmin()) {
+            return redirect()->route('dashboard-admin');
+        } else {
+            return redirect()->route('dashboard');
+        }
     }
+
     return view('auth/login');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::middleware(['auth:sanctum', 'verified', 'student'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/grades', function () {
+Route::middleware(['auth:sanctum', 'verified', 'student'])->get('/grades', function () {
     return view('grades');
 })->name('grades');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/ranking', function () {
+Route::middleware(['auth:sanctum', 'verified', 'student'])->get('/ranking', function () {
     return view('ranking');
 })->name('ranking');
+
+Route::middleware(['auth:sanctum', 'verified', 'admin'])->get('/dashboard-admin', function () {
+    return view('dashboard-admin');
+})->name('dashboard-admin');

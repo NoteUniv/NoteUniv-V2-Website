@@ -59,4 +59,24 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * Indicates if the user is a student
+     *
+     * @var bool
+     */
+    public function isStudent()
+    {
+        return $this->student_id !== null;
+    }
+
+    /**
+     * Indicates if the user is admin
+     *
+     * @var bool
+     */
+    public function isAdmin()
+    {
+        return $this->attributes['is_admin'] === 1 ? true : false;
+    }
 }
