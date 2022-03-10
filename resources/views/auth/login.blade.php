@@ -16,7 +16,7 @@
             @csrf
 
             <div>
-                <x-jet-label for="email" value="{{ __('Email') }}" />
+                <x-jet-label for="email" value="{{ __('Email Unistra') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             </div>
 
@@ -44,5 +44,19 @@
                 </x-jet-button>
             </div>
         </form>
+
+        <div class="mt-8">
+            <div class="border-t border-gray-300 pt-5">
+                <div class="flex items-center justify-center">
+                    <div class="text-sm text-gray-600">
+                        {{ __('Need an account?') }}
+                    </div>
+
+                    <a class="text-indigo-600 hover:text-indigo-900 ml-4" href="{{ route('register') }}">
+                        {{ __('Sign up') }}
+                    </a>
+                </div>
+            </div>
+        </div>
     </x-jet-authentication-card>
 </x-guest-layout>
