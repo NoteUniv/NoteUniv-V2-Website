@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,15 @@ Route::middleware(['auth:sanctum', 'verified', 'student'])->get('/ranking', func
     return view('ranking');
 })->name('ranking');
 
-Route::middleware(['auth:sanctum', 'verified', 'admin'])->get('/dashboard-admin', function () {
-    return view('dashboard-admin');
-})->name('dashboard-admin');
+Route::middleware(['auth:sanctum', 'verified', 'admin'])
+    ->get(
+        '/dashboard-admin',
+        [FileController::class, 'index']
+    )
+    ->name('dashboard-admin');
+
+Route::middleware(['auth:sanctum', 'verified', 'admin'])
+    ->post(
+        'upload-mecc',
+        [FileController::class, 'uploadMecc']
+    )->name('upload-mecc');

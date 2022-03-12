@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('ue');
             $table->integer('semester');
-            $table->string('subject_code');
+            $table->string('subject_code')->nullable();
             $table->string('subject_name');
             $table->integer('coefficient');
             $table->string('promo');
