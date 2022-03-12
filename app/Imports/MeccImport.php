@@ -23,15 +23,25 @@ class MeccImport implements ToCollection
         $rows = $rows->slice(3);
 
         foreach ($rows as $row) {
-            Mecc::create([
-                'ue' => $row[1],
-                'semester'  => $row[0],
-                'subject_code' => $row[2],
-                'subject_name' => $row[3],
-                'coefficient' => $row[4],
-                'promo' => $promo,
-                'year' => $year,
-            ]);
+            if (empty($row[0])) {
+                continue;
+            }
+
+            // Update rows data if same promo and year, else create new rows
+            Mecc::updateOrCreate(
+                [
+                    'hidden_id' => $row[16],
+                    'promo' => $promo,
+                    'year' => $year,
+                ],
+                [
+                    'ue' => $row[1],
+                    'semester'  => $row[0],
+                    'subject_code' => $row[2],
+                    'subject_name' => $row[3],
+                    'coefficient' => $row[4],
+                ]
+            );
         }
     }
 }

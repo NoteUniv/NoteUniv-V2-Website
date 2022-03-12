@@ -49,6 +49,6 @@ Route::middleware(['auth:sanctum', 'verified', 'admin'])
 
 Route::middleware(['auth:sanctum', 'verified', 'admin'])
     ->post(
-        'upload-mecc',
+        '/upload-mecc',
         [FileController::class, 'uploadMecc']
     )->name('upload-mecc');

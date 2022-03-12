@@ -21,5 +21,6 @@ class Mecc extends Model
         'coefficient',
         'promo',
         'year',
+        'hidden_id',
     ];
 }

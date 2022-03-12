@@ -31,8 +31,6 @@ class FileController extends Controller
 
         Excel::import(new MeccImport, 'storage/mecc/' . $filename);
 
-        exit;
-
         return response()->json([
             'success' => $filename
         ]);
