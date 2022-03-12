@@ -11,7 +11,7 @@
                 <h3>{{ __('Files in public/mecc') }}</h3>
                 <ul>
                     @foreach ($meccFiles as $file)
-                        <li class="list-group-item">
+                        <li>
                             {{ explode('_', basename($file), 2)[1] }}
                             {{ date('Y-m-d', explode('_', basename($file), 2)[0]) }}
 
@@ -22,11 +22,9 @@
                     @endforeach
                 </ul>
 
-                <div class="col-md-8 w-96 h-96">
-                    @if (session()->get('message'))
-                        <div class="alert alert-success">
-                            {{ session()->get('message') }}
-                        </div>
+                <div class="w-96 h-96">
+                    @if (session()->get('error'))
+                        {{ session()->get('error') }}
                     @endif
 
                     <form action="{{ route('upload-mecc') }}" method="post" enctype="multipart/form-data" id="image-upload" class="dropzone h-full">
@@ -34,6 +32,10 @@
                         <div class="dz-message" data-dz-message>{{ __('Upload a file ➕') }}</div>
                     </form>
                 </div>
+
+                <a href="{{ url('grades-template') }}">
+                    {{ __('Download Grades Template') }}
+                </a>
             </div>
         </div>
     </div>

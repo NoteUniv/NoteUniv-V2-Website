@@ -52,3 +52,9 @@ Route::middleware(['auth:sanctum', 'verified', 'admin'])
         '/upload-mecc',
         [FileController::class, 'uploadMecc']
     )->name('upload-mecc');
+
+Route::middleware(['auth:sanctum', 'verified', 'admin'])
+    ->get(
+        '/grades-template',
+        [FileController::class, 'downloadGradesTemplate']
+    )->name('grades-template');
