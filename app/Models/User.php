@@ -65,18 +65,8 @@ class User extends Authenticatable
      *
      * @var bool
      */
-    public function isStudent()
+    public function getIsStudentAttribute()
     {
         return $this->student_id !== null;
-    }
-
-    /**
-     * Indicates if the user is admin
-     *
-     * @var bool
-     */
-    public function isAdmin()
-    {
-        return $this->attributes['is_admin'] === 1 ? true : false;
     }
 }

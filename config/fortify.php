@@ -63,7 +63,7 @@ return [
     */
 
     'home' => function () {
-        if (Auth::user()->isAdmin()) {
+        if (Auth::user()->is_admin) {
             return route('dashboard-admin');
         } else {
             return route('dashboard');

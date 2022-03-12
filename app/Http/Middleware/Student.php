@@ -16,7 +16,7 @@ class Student
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->user()->isStudent()) {
+        if ($request->user()->is_student) {
             return $next($request);
         }
     }

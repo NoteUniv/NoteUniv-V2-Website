@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     // If user session is logged in, redirect to dashboard or dashboard-admin
     if (Auth::check()) {
-        if (Auth::user()->isAdmin()) {
+        if (Auth::user()->is_admin) {
             return redirect()->route('dashboard-admin');
         } else {
             return redirect()->route('dashboard');
