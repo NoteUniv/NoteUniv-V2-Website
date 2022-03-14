@@ -15,9 +15,15 @@ class FileController extends Controller
     public function index()
     {
         $meccFiles = Storage::files('public/mecc');
+
         $meccFiles = array_map(function ($file) {
+            if (substr(basename($file), 0, 1) === '.') {
+                return null;
+            }
             return str_replace('public/', 'storage/', $file);
         }, $meccFiles);
+
+        $meccFiles = array_filter($meccFiles);
 
         return view('dashboard-admin', ['meccFiles' => $meccFiles]);
     }
