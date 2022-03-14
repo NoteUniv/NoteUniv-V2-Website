@@ -27,7 +27,7 @@
                         {{ session()->get('error') }}
                     @endif
 
-                    <form action="{{ route('upload-mecc') }}" method="post" enctype="multipart/form-data" id="image-upload" class="dropzone h-full">
+                    <form action="{{ route('upload-mecc') }}" method="post" enctype="multipart/form-data" id="mecc-upload" class="dropzone h-full">
                         @csrf
                         <div class="dz-message" data-dz-message>{{ __('Upload a file ➕') }}</div>
                     </form>
@@ -43,7 +43,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var dropzone = new Dropzone('#image-upload', {
+        new Dropzone('#mecc-upload', {
             acceptedFiles: '.xlx,.xls,.xlsx',
             uploadMultiple: false,
             createImageThumbnails: false,
