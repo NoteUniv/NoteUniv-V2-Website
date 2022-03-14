@@ -16,6 +16,15 @@
 
             <x-jet-input-error for="email_notifications" class="mt-1" />
         </div>
+
+        <!-- Checkbox for ranking -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="is_ranked" value="{{ __('Show yourself in the ranking page') }}" />
+
+            <x-jet-checkbox id="is_ranked" wire:model.defer="is_ranked" />
+
+            <x-jet-input-error for="is_ranked" class="mt-1" />
+        </div>
     </x-slot>
 
     <x-slot name="actions">
