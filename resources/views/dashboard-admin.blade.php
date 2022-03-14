@@ -33,8 +33,8 @@
                     </form>
                 </div>
 
-                <a href="{{ url('grades-template') }}">
-                    {{ __('Download Grades Template') }}
+                <a href="{{ url('mecc-template') }}">
+                    {{ __('Download Mecc Template') }}
                 </a>
             </div>
 
@@ -65,6 +65,10 @@
                         <div class="dz-message" data-dz-message>{{ __('Upload a file ➕') }}</div>
                     </form>
                 </div>
+
+                <a href="{{ url('grades-template') }}">
+                    {{ __('Download Grades Template') }}
+                </a>
             </div>
         </div>
     </div>

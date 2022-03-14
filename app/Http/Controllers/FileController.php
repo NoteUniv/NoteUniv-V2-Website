@@ -74,6 +74,13 @@ class FileController extends Controller
         ]);
     }
 
+    public function downloadMeccTemplate()
+    {
+        $file = storage_path('app/private/mecc_template.xlsx');
+
+        return response()->download($file);
+    }
+
     public function downloadGradesTemplate()
     {
         $file = storage_path('app/private/grades_template.xlsx');
