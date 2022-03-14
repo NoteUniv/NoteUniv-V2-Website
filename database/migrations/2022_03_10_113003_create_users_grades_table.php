@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users_grades', function (Blueprint $table) {
-            $table->foreignId('student_id')->references('id')->on('users')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('student_id');
             $table->foreignId('grade_id')->references('id')->on('grades')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->float('grade_value');
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\GradesImport;
 use App\Imports\MeccImport;
 use App\Models\Mecc;
 use Illuminate\Http\Request;
@@ -25,7 +26,18 @@ class FileController extends Controller
 
         $meccFiles = array_filter($meccFiles);
 
-        return view('dashboard-admin', ['meccFiles' => $meccFiles]);
+        $gradeFiles = Storage::files('public/grades');
+
+        $gradeFiles = array_map(function ($file) {
+            if (substr(basename($file), 0, 1) === '.') {
+                return null;
+            }
+            return str_replace('public/', 'storage/', $file);
+        }, $gradeFiles);
+
+        $gradeFiles = array_filter($gradeFiles);
+
+        return view('dashboard-admin', ['meccFiles' => $meccFiles, 'gradeFiles' => $gradeFiles]);
     }
 
     public function uploadMecc(Request $request)
@@ -39,6 +51,23 @@ class FileController extends Controller
         $excel->storeAs('public/mecc', $filename);
 
         Excel::import(new MeccImport, 'storage/mecc/' . $filename);
+
+        return response()->json([
+            'success' => $filename
+        ]);
+    }
+
+    public function uploadGrade(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlx,xls,xlsx|max:2048'
+        ]);
+        $excel = $request->file('file');
+        $filename = time() . '_' . $excel->getClientOriginalName();
+
+        $excel->storeAs('public/grades', $filename);
+
+        Excel::import(new GradesImport, 'storage/grades/' . $filename);
 
         return response()->json([
             'success' => $filename

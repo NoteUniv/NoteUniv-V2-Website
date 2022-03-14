@@ -5,27 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Mecc extends Model
+class UserGrade extends Model
 {
     use HasFactory;
 
-    protected $table = 'mecc';
+    protected $table = 'users_grades';
 
     public $timestamps = false;
 
     protected $fillable = [
-        'ue',
-        'semester',
-        'subject_code',
-        'subject_name',
-        'coefficient',
-        'promo',
-        'year',
-        'hidden_id',
+        'student_id',
+        'grade_id',
+        'grade_value',
     ];
 
     public function grades()
     {
         return $this->hasMany(Grade::class);
+    }
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
     }
 }
