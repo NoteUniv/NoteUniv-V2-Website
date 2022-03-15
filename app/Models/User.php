@@ -70,8 +70,68 @@ class User extends Authenticatable
         return $this->student_id !== null;
     }
 
+    public function userGrades()
+    {
+        return $this->hasMany(UserGrade::class, 'student_id', 'student_id');
+    }
+
     public function grades()
     {
-        return $this->hasMany(Grade::class);
+        $grades = $this->userGrades->map(function ($grade) {
+            $gradeValue =  $grade->grade_value;
+            $grade = Grade::where('id', $grade->grade_id)->first();
+            $meccId = $grade->mecc->id;
+            $gradeCoefficient = $grade->mecc->coefficient;
+
+            return [
+                'grade_value' => $gradeValue,
+                'mecc_id' => $meccId,
+                'coefficient' => $gradeCoefficient,
+            ];
+        });
+
+        return $grades;
+    }
+
+    public function averagePerSubject()
+    {
+        $gradePerSubject = [];
+        foreach ($this->grades() as $grade) {
+            $gradePerSubject[$grade['mecc_id']][] = $grade['grade_value'];
+        }
+
+        $averagePerSubject = [];
+        foreach ($gradePerSubject as $mecc_id => $subjectGrades) {
+            $subjectGrades = array_filter($subjectGrades);
+            $subjectAverage = array_sum($subjectGrades) / count($subjectGrades);
+            $averagePerSubject[$mecc_id] = $subjectAverage;
+        }
+
+        return $averagePerSubject;
+    }
+
+    public function overallAverage()
+    {
+        $coefPerSubject = [];
+
+        foreach ($this->grades() as $grade) {
+            if (!array_key_exists($grade['mecc_id'], $coefPerSubject)) {
+                $coefPerSubject[$grade['mecc_id']] = $grade['coefficient'];
+            }
+        }
+
+        $overallAverage = 0;
+        foreach ($this->averagePerSubject() as $mecc_id => $subjectAverage) {
+            $overallAverage += $subjectAverage * $coefPerSubject[$mecc_id];
+        }
+
+        $allCoefficients = 0;
+        foreach ($coefPerSubject as $subjectCoef) {
+            $allCoefficients += $subjectCoef;
+        }
+
+        $overallAverage = $overallAverage / $allCoefficients;
+
+        return $overallAverage;
     }
 }
