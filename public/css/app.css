@@ -929,6 +929,21 @@ select {
 .left-\[5vw\] {
   left: 5vw;
 }
+.bottom-0 {
+  bottom: 0px;
+}
+.top-20 {
+  top: 5rem;
+}
+.bottom-20 {
+  bottom: 5rem;
+}
+.top-10 {
+  top: 2.5rem;
+}
+.bottom-10 {
+  bottom: 2.5rem;
+}
 .z-0 {
   z-index: 0;
 }
@@ -1130,6 +1145,30 @@ select {
 }
 .w-96 {
   width: 24rem;
+}
+.w-5\/6 {
+  width: 83.333333%;
+}
+.w-\[300px\] {
+  width: 300px;
+}
+.w-\[800px\] {
+  width: 800px;
+}
+.w-\[600px\] {
+  width: 600px;
+}
+.w-\[450px\] {
+  width: 450px;
+}
+.w-\[3750px\] {
+  width: 3750px;
+}
+.w-\[375px\] {
+  width: 375px;
+}
+.w-\[400px\] {
+  width: 400px;
 }
 .min-w-0 {
   min-width: 0px;

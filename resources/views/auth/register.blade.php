@@ -92,9 +92,13 @@
         <div x-cloak
             class="absolute top-0 w-full xl:w-1/2 h-screen bg-nu-primary flex justify-center transform translate-x-full transition-transform duration-500"
             :class="{'translate-x-0': isOpen}" @click="isOpen = false">
-            <img src="../svg/logo-shape.svg" alt="" class="m-auto w-1/2">
-            <div class="absolute top-[5vw] left-[5vw] h-8 w-8 text-white transform -rotate-90 xl:hidden">
-                chevron
+            <div class="relative w-full h-full">
+                <img src="../images/login-page-top.svg" alt="" class="absolute top-10 left-0 w-[400px]">
+                <img src="../images/login-page-bg.svg" alt="" class="m-auto h-full object-cover">
+                <img src="../images/login-page-bottom.svg" alt="" class="absolute bottom-10 right-0 w-[600px]">
+                <div class="absolute top-[5vw] left-[5vw] h-8 w-8 text-white transform -rotate-90 xl:hidden">
+                    @svg(chevron-down)
+                </div>
             </div>
         </div>
     </div>
