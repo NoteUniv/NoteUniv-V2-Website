@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Grade;
+use App\Models\UserGrade;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        // Grade::factory(10)->create();
+        UserGrade::factory(10)->create();
     }
 }
