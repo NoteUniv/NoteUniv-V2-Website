@@ -1,0 +1,21 @@
+{
+    "Register": "Inscription",
+    "Student ID": "Numéro étudiant",
+    "Email Unistra": "Email Unistra",
+    "Password": "Mot de passe",
+    "Confirm Password": "Confirmer le mot de passe",
+    "Receive email notifications": "Recevoir des notifications par email",
+    "I agree to the :terms_of_service and :privacy_policy": "J'accepte les :terms_of_service et la :privacy_policy",
+    "Terms of Service": "Conditions d'utilisation",
+    "Privacy Policy": "Politique de confidentialité",
+    "Sign up": "S'inscrire",
+    "Already registered?": "Déjà inscrit ?",
+    "Log in": "Se connecter",
+
+    "Login": "Connexion",
+    "Your unistra email": "Votre email unistra",
+    "Your password": "Votre mot de passe",
+    "Forgot your password?": "Mot de passe oublié ?",
+    "Remember me": "Se souvenir de moi",
+    "Need an account?": "Vous n'êtes pas encore inscrit ?"
+}
