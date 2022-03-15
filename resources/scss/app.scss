@@ -31,14 +31,14 @@ svg {
 }
 
 .btn {
-    @apply py-1.5 rounded-md bg-nu-secondary text-white font-semibold;
+    @apply py-1.5 rounded-md bg-nu-secondary text-white font-semibold block;
 }
 
 .btn-link {
     @apply relative flex pl-4 pr-10 py-1.5 border-2 border-nu-secondary border-solid rounded-md text-xs text-nu-secondary font-medium transition-colors duration-150;
 
     &::after {
-        // content: url("../assets/images/chevron-down.svg");
+        content: url("../../public/svg/chevron-down.svg");
         filter: invert(37%) sepia(94%) saturate(2346%) hue-rotate(202deg) brightness(101%) contrast(86%);
         @apply absolute right-4 top-1/2 transform -translate-y-1/2 -rotate-90 w-3 transition-all duration-150;
     }
@@ -54,7 +54,7 @@ svg {
 }
 
 .input {
-    @apply block w-full border border-nu-gray-200;
+    @apply block w-full border border-nu-gray-200 text-sm;
 
     &:focus+div {
         @apply bg-nu-primary;
@@ -69,7 +69,7 @@ svg {
     }
 
     &::after {
-        // content: url("../assets/images/chevron-down.svg");
+        content: url("../../public/svg/chevron-down.svg");
         filter: invert(100%) sepia(15%) saturate(2%) hue-rotate(158deg) brightness(110%) contrast(101%);
         @apply absolute top-1/2 -translate-y-1/2 right-4 w-4 pointer-events-none;
     }
