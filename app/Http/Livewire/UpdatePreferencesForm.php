@@ -8,6 +8,7 @@ use Livewire\Component;
 class UpdatePreferencesForm extends Component
 {
     public $email_notifications;
+    public $is_ranked;
 
     public User $user;
 
@@ -19,14 +20,16 @@ class UpdatePreferencesForm extends Component
     public function render()
     {
         $this->email_notifications = $this->user->email_notifications;
+        $this->is_ranked = $this->user->is_ranked;
 
-        return view('livewire.profile.update-preferences-form');
+        return view('profile.update-preferences-form');
     }
 
     public function updatePreferences()
     {
         $this->user->forceFill([
             'email_notifications' => $this->email_notifications ? true : false,
+            'is_ranked' => $this->is_ranked ? true : false,
         ])->save();
 
         $this->emit('saved');

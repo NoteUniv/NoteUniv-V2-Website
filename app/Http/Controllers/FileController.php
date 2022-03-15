@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\GradesImport;
 use App\Imports\MeccImport;
 use App\Models\Mecc;
 use Illuminate\Http\Request;
@@ -15,11 +16,28 @@ class FileController extends Controller
     public function index()
     {
         $meccFiles = Storage::files('public/mecc');
+
         $meccFiles = array_map(function ($file) {
+            if (substr(basename($file), 0, 1) === '.') {
+                return null;
+            }
             return str_replace('public/', 'storage/', $file);
         }, $meccFiles);
 
-        return view('dashboard-admin', ['meccFiles' => $meccFiles]);
+        $meccFiles = array_filter($meccFiles);
+
+        $gradeFiles = Storage::files('public/grades');
+
+        $gradeFiles = array_map(function ($file) {
+            if (substr(basename($file), 0, 1) === '.') {
+                return null;
+            }
+            return str_replace('public/', 'storage/', $file);
+        }, $gradeFiles);
+
+        $gradeFiles = array_filter($gradeFiles);
+
+        return view('dashboard-admin', ['meccFiles' => $meccFiles, 'gradeFiles' => $gradeFiles]);
     }
 
     public function uploadMecc(Request $request)
@@ -37,6 +55,30 @@ class FileController extends Controller
         return response()->json([
             'success' => $filename
         ]);
+    }
+
+    public function uploadGrade(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlx,xls,xlsx|max:2048'
+        ]);
+        $excel = $request->file('file');
+        $filename = time() . '_' . $excel->getClientOriginalName();
+
+        $excel->storeAs('public/grades', $filename);
+
+        Excel::import(new GradesImport, 'storage/grades/' . $filename);
+
+        return response()->json([
+            'success' => $filename
+        ]);
+    }
+
+    public function downloadMeccTemplate()
+    {
+        $file = storage_path('app/private/mecc_template.xlsx');
+
+        return response()->download($file);
     }
 
     public function downloadGradesTemplate()
