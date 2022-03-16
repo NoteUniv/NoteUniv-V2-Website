@@ -2,11 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Imports\MeccImport;
 use App\Models\Grade;
 use App\Models\User;
 use App\Models\UserGrade;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,6 +25,11 @@ class DatabaseSeeder extends Seeder
             'is_ranked' => false,
             'password' => Hash::make('admin'),
         ]);
+
+        $exampleMecc = 'https://raw.githubusercontent.com/NoteUniv/NoteUniv-Excel/main/dweb_mecc.xlsx';
+        copy($exampleMecc, storage_path('app/public/mecc/dweb_mecc.xlsx'));
+        Excel::import(new MeccImport, storage_path('app/public/mecc/dweb_mecc.xlsx'));
+
         // Grade::factory(10)->create();
         UserGrade::factory(10)->create();
     }
