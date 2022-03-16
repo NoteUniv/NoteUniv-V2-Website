@@ -78,16 +78,16 @@ class User extends Authenticatable
     public function grades()
     {
         $allGrades = Grade::all();
+        $allMecc = Mecc::all();
 
-        $grades = $this->userGrades->map(function ($grade) use ($allGrades) {
+        $grades = $this->userGrades->map(function ($grade) use ($allGrades, $allMecc) {
             $gradeValue =  $grade->grade_value;
             $grade = $allGrades->where('id', $grade->grade_id)->first();
-            $meccId = $grade->mecc->id;
-            $gradeCoefficient = $grade->mecc->coefficient;
+            $gradeCoefficient = $allMecc->where('id', $grade->mecc_id)->first()->coefficient;
 
             return [
-                'grade_value' => $gradeValue,
-                'mecc_id' => $meccId,
+                'mecc_id' => $grade->mecc_id,
+                'value' => $gradeValue,
                 'coefficient' => $gradeCoefficient,
             ];
         });
@@ -99,7 +99,7 @@ class User extends Authenticatable
     {
         $gradePerSubject = [];
         foreach ($this->grades() as $grade) {
-            $gradePerSubject[$grade['mecc_id']][] = $grade['grade_value'];
+            $gradePerSubject[$grade['mecc_id']][] = $grade['value'];
         }
 
         $averagePerSubject = [];
@@ -115,7 +115,6 @@ class User extends Authenticatable
     public function overallAverage()
     {
         $coefPerSubject = [];
-
         foreach ($this->grades() as $grade) {
             if (!array_key_exists($grade['mecc_id'], $coefPerSubject)) {
                 $coefPerSubject[$grade['mecc_id']] = $grade['coefficient'];
