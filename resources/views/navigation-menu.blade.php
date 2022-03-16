@@ -13,9 +13,9 @@
 
                     <!-- Navigation Links -->
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('dashboard-admin') }}" :active="request()->routeIs('dashboard-admin')">
+                        <x-nav-link href="{{ route('dashboard-admin') }}" :active="request()->routeIs('dashboard-admin')">
                             {{ __('Admin Dashboard') }}
-                        </x-jet-nav-link>
+                        </x-nav-link>
                     </div>
                 @else
                     <!-- Logo -->
@@ -27,21 +27,21 @@
 
                     <!-- Navigation Links -->
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                             {{ __('Dashboard') }}
-                        </x-jet-nav-link>
+                        </x-nav-link>
                     </div>
 
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('grades') }}" :active="request()->routeIs('grades')">
+                        <x-nav-link href="{{ route('grades') }}" :active="request()->routeIs('grades')">
                             {{ __('Grades & averages') }}
-                        </x-jet-nav-link>
+                        </x-nav-link>
                     </div>
 
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('ranking') }}" :active="request()->routeIs('ranking')">
+                        <x-nav-link href="{{ route('ranking') }}" :active="request()->routeIs('ranking')">
                             {{ __('Ranking') }}
-                        </x-jet-nav-link>
+                        </x-nav-link>
                     </div>
                 @endif
             </div>
