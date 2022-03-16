@@ -113,7 +113,11 @@ class User extends Authenticatable
         $averagePerSubject = [];
         foreach ($gradePerSubject as $mecc_id => $subjectGrades) {
             $subjectGrades = array_filter($subjectGrades);
-            $subjectAverage = array_sum($subjectGrades) / count($subjectGrades);
+            if ($subjectGrades) {
+                $subjectAverage = array_sum($subjectGrades) / count($subjectGrades);
+            } else {
+                $subjectAverage = 0;
+            }
             $averagePerSubject[$mecc_id] = $subjectAverage;
         }
 
