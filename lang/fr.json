@@ -62,5 +62,12 @@
     "Class average": "Moyenne de classe",
     "View my averages": "Voir mes moyennes",
     "Position in the ranking": "Position dans le classement",
-    "View the ranking": "Voir le classement"
+    "View the ranking": "Voir le classement",
+
+    "Student": "Etudiant",
+    "Class": "Classe",
+    "Work name": "Nom du devoir",
+    "Grade": "Note",
+    "Average": "Moyenne",
+    "Overall averages": "Moyennes générales"
 }
