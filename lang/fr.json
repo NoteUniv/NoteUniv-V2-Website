@@ -63,5 +63,11 @@
     "Some information are hidden on mobile devices.": "Certaines informations sont cachées sur le format mobile.",
     "View my averages": "Voir mes moyennes",
     "Position in the ranking": "Position dans le classement",
-    "View the ranking": "Voir le classement"
+    "View the ranking": "Voir le classement",
+
+    "Go to my rank": "Aller à ma position",
+    "Remove me from the ranking": "Me désinscrire du classement",
+    "Rank": "Rang",
+    "Student": "Étudiant",
+    "Average": "Moyenne"
 }
