@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="m-auto flex flex-col items-center gap-y-12 md:gap-y-16 xl:gap-y-10 py-8">
+    <div class="m-auto flex flex-col justify-center items-center gap-y-12 md:gap-y-16 xl:gap-y-10 py-8 min-h-screen">
         <div class="flex">
             <h1 class="text-4xl capitalize w-fit font-bold tracking-wide">{{ __('Register') }}</h1>
         </div>
@@ -40,7 +40,7 @@
             <div>
                 <x-jet-label for="email_notifications">
                     <div class="flex items-center text-xs text-gray-600">
-                        <x-jet-checkbox name="email_notifications" id="email_notifications" />
+                        <x-jet-checkbox name="email_notifications" id="email_notifications" class="text-nu-primary" />
 
                         <div class="ml-2">
                             {{ __('Receive email notifications') }}
@@ -53,7 +53,7 @@
                 <div>
                     <x-jet-label for="terms">
                         <div class="flex items-center text-xs text-gray-600">
-                            <x-jet-checkbox name="terms" id="terms" required />
+                            <x-jet-checkbox name="terms" id="terms" required class="text-nu-primary" />
 
                             <div class="ml-2">
                                 {{-- blade-formatter-disable --}}
@@ -70,7 +70,7 @@
                 </div>
             @endif
 
-            <x-jet-button class="btn !bg-nu-primary w-full h-10 rounded-md">
+            <x-jet-button class="btn justify-center !bg-nu-primary w-full h-10 rounded-md">
                 {{ __('Sign up') }}
             </x-jet-button>
         </form>

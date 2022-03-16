@@ -26,7 +26,8 @@
                             <x-jet-input id="email" type="email" name="email" :value="old('email')" required autofocus
                                 placeholder="{{ __('Your unistra email') }}" pattern=".+@etu\.unistra\.fr"
                                 class="input py-2 pl-14 pr-4 outline-2 outline-nu-primary focus:outline placeholder:text-nu-gray-300 rounded-md" />
-                            <div class="absolute w-10 h-10 bg-nu-gray-200 flex-shrink-0 flex rounded-l-md">
+                            <div
+                                class="absolute w-10 h-10 bg-nu-gray-200 flex-shrink-0 flex rounded-l-md pointer-events-none">
                                 <span class="m-auto w-5 h-5 text-white">
                                     @svg(mail-icon)
                                 </span>
@@ -47,7 +48,8 @@
                             <x-jet-input id="password" type="password" name="password" required
                                 autocomplete="current-password" placeholder="{{ __('Your password') }}"
                                 class="input py-2 pl-14 pr-4 outline-2 outline-nu-primary focus:outline placeholder:text-nu-gray-300 rounded-md" />
-                            <div class="absolute w-10 h-10 bg-nu-gray-200 flex-shrink-0 flex rounded-l-md">
+                            <div
+                                class="absolute w-10 h-10 bg-nu-gray-200 flex-shrink-0 flex rounded-l-md pointer-events-none">
                                 <span class="m-auto w-5 h-5 text-white">
                                     @svg(password-icon)
                                 </span>
@@ -57,12 +59,12 @@
 
                     <div class="block">
                         <label for="remember_me" class="flex items-center">
-                            <x-jet-checkbox id="remember_me" name="remember" />
+                            <x-jet-checkbox id="remember_me" name="remember" class="text-nu-primary" />
                             <span class="ml-2 text-xs text-gray-600">{{ __('Remember me') }}</span>
                         </label>
                     </div>
 
-                    <x-jet-button class="btn !bg-nu-primary w-full h-10 rounded-md">
+                    <x-jet-button class="btn !bg-nu-primary justify-center w-full h-10 rounded-md">
                         {{ __('Log in') }}
                     </x-jet-button>
                 </form>

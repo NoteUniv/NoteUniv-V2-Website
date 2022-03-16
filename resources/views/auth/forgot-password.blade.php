@@ -27,10 +27,15 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <x-jet-button>
+                <x-jet-button class="btn !bg-nu-primary justify-center w-full h-10 rounded-md">
                     {{ __('Email Password Reset Link') }}
                 </x-jet-button>
             </div>
         </form>
+        <div class="flex flex-col items-center">
+            <a href="{{ route('login') }}" class="btn-link mt-3">
+                <span>{{ __('Back to login page') }}</span>
+            </a>
+        </div>
     </div>
 </x-guest-layout>
