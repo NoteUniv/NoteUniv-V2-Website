@@ -77,9 +77,11 @@ class User extends Authenticatable
 
     public function grades()
     {
-        $grades = $this->userGrades->map(function ($grade) {
+        $allGrades = Grade::all();
+
+        $grades = $this->userGrades->map(function ($grade) use ($allGrades) {
             $gradeValue =  $grade->grade_value;
-            $grade = Grade::where('id', $grade->grade_id)->first();
+            $grade = $allGrades->where('id', $grade->grade_id)->first();
             $meccId = $grade->mecc->id;
             $gradeCoefficient = $grade->mecc->coefficient;
 
