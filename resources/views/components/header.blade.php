@@ -1,21 +1,21 @@
-<header class="px-4 md:px-12">
-    <div class="w-full col-start-2 col-span-8 pb-8 xl:pb-10 pt-12 xl:pt-16 flex justify-between">
+<header class="px-4 md:px-12 max-w-[1480px] m-auto">
+    <div class="w-full col-start-2 col-span-8 pb-8 xl:pb-10 pt-12 flex justify-between">
         <div class="flex items-center">
             <img src="{{ asset('svg/' . View::getSection('icon') . '.svg') }}" alt="" class="mr-4 w-7 h-7">
             <h1 class="text-2xl xl:text-3xl">@yield('title')</h1>
         </div>
         <div class="relative" x-data="{ isOpen: false}">
             <div class="flex items-center cursor-pointer py-2" @mouseEnter="isOpen = true" @mouseLeave="isOpen = false">
-                <p class="hidden xl:block text-md font-semibold mr-4 text-nu-primary">{{ Auth::user()->email }}</p>
-                <button class="bg-white p-3 xl:py-4 shadow-drop rounded-md" @keydown.enter="isOpen = true" @keydown.escape="isOpen = false">
-                    <div class="hidden xl:block transform transition-transform duration-200 text-nu-primary" :class="{'-rotate-180':isOpen}">
+                <p class="hidden lg:block text-md font-semibold mr-4 text-nu-primary">{{ Auth::user()->email }}</p>
+                <button class="bg-white p-3 lg:py-4 shadow-drop rounded-md" @keydown.enter="isOpen = true" @keydown.escape="isOpen = false">
+                    <div class="hidden lg:block transform transition-transform duration-200 text-nu-primary" :class="{'-rotate-180':isOpen}">
                         @svg(chevron-down)
                     </div>
-                    <div class="xl:hidden text-nu-primary">
+                    <div class="lg:hidden text-nu-primary">
                         @svg(account-icon)
                     </div>
                 </button>
-                <ul x-cloak x-show=" isOpen" class="absolute font-normal bg-white shadow rounded-md overflow-hidden w-48 right-0 z-20 top-full">
+                <ul x-cloak x-show=" isOpen" class="absolute font-normal bg-white shadow-drop rounded-md overflow-hidden w-48 right-0 z-20 top-full">
                     <li>
                         <a href="{{ route('profile.show') }}" class="flex items-center px-3 py-3 text-nu-primary hover:bg-nu-secondary hover:text-white transition-colors duration-150">
                             <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="w-5 h-5">
