@@ -101,6 +101,9 @@ class FileController extends Controller
             $sheet->setCellValue($promoCol . $i, $mecc->subject_name);
         }
 
+        $hiddenSheet = $spreadsheet->getSheetByName('Select values');
+        $hiddenSheet->setSheetState('veryHidden');
+
         $writer = new XlsxWriter($spreadsheet);
         $writer->save(storage_path('app/public/grades_template.xlsx'));
 
