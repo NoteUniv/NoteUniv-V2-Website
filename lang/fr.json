@@ -60,14 +60,18 @@
     "Name of work": "Nom du devoir",
     "My grade": "Ma note",
     "Class average": "Moyenne de classe",
+    "Some information are hidden on mobile devices.": "Certaines informations sont cachées sur le format mobile.",
     "View my averages": "Voir mes moyennes",
     "Position in the ranking": "Position dans le classement",
     "View the ranking": "Voir le classement",
 
-    "Student": "Etudiant",
     "Class": "Classe",
     "Work name": "Nom du devoir",
     "Grade": "Note",
-    "Average": "Moyenne",
-    "Overall averages": "Moyennes générales"
+    "Overall averages": "Moyennes générales",
+    "Go to my rank": "Aller à ma position",
+    "Remove me from the ranking": "Me désinscrire du classement",
+    "Rank": "Rang",
+    "Student": "Étudiant",
+    "Average": "Moyenne"
 }
