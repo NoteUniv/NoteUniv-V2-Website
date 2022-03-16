@@ -12,8 +12,10 @@
                     </div>
                 </div>
             </button>
-            <a href="#" class="bg-nu-primary w-full aspect-square flex items-center justify-center text-white">
-                <img class="w-2/3" src="{{ asset('svg/logo.svg') }}" alt="">
+            <a href="#" class="bg-nu-primary w-full aspect-square flex items-center justify-center">
+                <div class="w-2/3 text-white">
+                    @svg(logo)
+                </div>
             </a>
             <div class="relative">
                 <select name="semesters" id="semester-select" class="appearance-none bg-nu-secondary w-full text-white px-6 py-2 focus:outline-none">
