@@ -70,6 +70,8 @@ class User extends Authenticatable
         return $this->student_id !== null;
     }
 
+    public $grades;
+
     public function userGrades()
     {
         return $this->hasMany(UserGrade::class, 'student_id', 'student_id');
@@ -92,13 +94,19 @@ class User extends Authenticatable
             ];
         });
 
+        $this->grades = $grades;
+
         return $grades;
     }
 
     public function averagePerSubject()
     {
+        if ($this->grades === null) {
+            $this->grades = $this->grades();
+        }
+
         $gradePerSubject = [];
-        foreach ($this->grades() as $grade) {
+        foreach ($this->grades as $grade) {
             $gradePerSubject[$grade['mecc_id']][] = $grade['value'];
         }
 
@@ -114,8 +122,12 @@ class User extends Authenticatable
 
     public function overallAverage()
     {
+        if ($this->grades === null) {
+            $this->grades = $this->grades();
+        }
+
         $coefPerSubject = [];
-        foreach ($this->grades() as $grade) {
+        foreach ($this->grades as $grade) {
             if (!array_key_exists($grade['mecc_id'], $coefPerSubject)) {
                 $coefPerSubject[$grade['mecc_id']] = $grade['coefficient'];
             }
