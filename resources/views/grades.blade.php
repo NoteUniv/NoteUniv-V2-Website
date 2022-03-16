@@ -125,7 +125,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="md:hidden mt-4" x-show="isOpen">
+                    <div class="xl:hidden mt-4" x-show="isOpen">
                         <p class="text-xs text-nu-gray-400">
                             {{ __('Some information are hidden on mobile devices.') }}
                         </p>
