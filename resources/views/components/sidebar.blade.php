@@ -45,10 +45,14 @@
                         <!-- Navigation Links -->
                         <li>
                             <x-nav-link href="{{ route('dashboard-admin') }}" :active="request()->routeIs('dashboard-admin')">
-                                {{ __('Admin Dashboard') }}
+                                <div class="w-3 mr-4 transform scale-150">
+                                    @svg(dashboard-icon)
+                                </div>
+                                <p class="text-sm">{{ __('Admin Dashboard') }}</p>
                             </x-nav-link>
                         </li>
-                    @else
+                    @endif
+                    @if (Auth::user()->is_student)
                         <!-- Navigation Links -->
                         <li>
                             <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
