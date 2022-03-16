@@ -30,13 +30,11 @@
         <div class="h-screen max-h-screen flex flex-col flex-grow min-w-0 overflow-x-hidden overflow-y-auto">
             <div class="flex-grow">
                 <x-header />
-                <div class="flex-grow">
-                    <main class="mb-24 px-4 md:px-12">
-                        {{ $slot }}
-                    </main>
-                </div>
-                <x-footer />
+                <main class="mb-16 px-4 md:px-12 max-w-[1480px] m-auto">
+                    {{ $slot }}
+                </main>
             </div>
+            <x-footer />
         </div>
     </div>
 

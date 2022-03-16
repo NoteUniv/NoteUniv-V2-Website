@@ -12,7 +12,7 @@
                     </div>
                 </div>
             </button>
-            <a href="#" class="bg-nu-primary w-full aspect-square flex items-center justify-center">
+            <a href="#" class="bg-nu-primary w-full aspect-square flex items-center justify-center text-white">
                 <img class="w-2/3" src="{{ asset('svg/logo.svg') }}" alt="">
             </a>
             <div class="relative">
@@ -31,7 +31,7 @@
             <div class="bg-nu-gray-100 w-full py-4 text-center">
                 <p class="mb-2">{{ __('Overall average') }}</p>
                 <div>
-                    <span class="text-nu-green text-2xl">14,95</span>
+                    <span class="text-grade text-2xl">{{ number_format(Auth::user()->overallAverage(), 2) }}</span>
                     <span class="text-nu-gray-300">/ 20</span>
                 </div>
             </div>
