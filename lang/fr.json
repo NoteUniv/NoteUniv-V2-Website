@@ -74,5 +74,12 @@
     "Rank": "Rang",
     "Student": "Étudiant",
     "Average": "Moyenne",
-    "Back to login page": "Retour à la page de connexion"
+    "Back to login page": "Retour à la page de connexion",
+
+    "Admin dashboard": "Panel administrateur",
+    "Search...": "Rechercher...",
+    "Select a promo": "Selectionnez une promo",
+    "File": "Fichier",
+    "MECC template": "Fichier modèle MECC",
+    "Upload a file": "Ajouter un fichier"
 }
