@@ -17,28 +17,30 @@
                     @svg(logo)
                 </div>
             </a>
-            <div class="relative">
-                <select name="semesters" id="semester-select" class="appearance-none bg-nu-secondary w-full text-white px-6 py-2 focus:outline-none">
-                    @php
-                        $userData = Auth::user()->data;
-                    @endphp
-                    @for ($i = 1; $i < $userData['max_semester'] + 1; $i++)
-                        <option value="{{ $i }}" @if ($i == $userData['current_semester']) selected @endif>
-                            {{ __('Semester') }} {{ $i }}
-                        </option>
-                    @endfor
-                </select>
-                <div class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white">
-                    @svg(chevron-down)
+            @if (Auth::user()->is_student)
+                <div class="relative">
+                    <select name="semesters" id="semester-select" class="appearance-none bg-nu-secondary w-full text-white px-6 py-2 focus:outline-none">
+                        @php
+                            $userData = Auth::user()->data;
+                        @endphp
+                        @for ($i = 1; $i < $userData['max_semester'] + 1; $i++)
+                            <option value="{{ $i }}" @if ($i == $userData['current_semester']) selected @endif>
+                                {{ __('Semester') }} {{ $i }}
+                            </option>
+                        @endfor
+                    </select>
+                    <div class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white">
+                        @svg(chevron-down)
+                    </div>
                 </div>
-            </div>
-            <div class="bg-nu-gray-100 w-full py-4 text-center">
-                <p class="mb-2">{{ __('Overall average') }}</p>
-                <div>
-                    <span class="text-grade text-2xl">{{ number_format(Auth::user()->overallAverage(), 2) }}</span>
-                    <span class="text-nu-gray-300">/ 20</span>
+                <div class="bg-nu-gray-100 w-full py-4 text-center">
+                    <p class="mb-2">{{ __('Overall average') }}</p>
+                    <div>
+                        <span class="text-grade text-2xl">{{ number_format(Auth::user()->overallAverage(), 2) }}</span>
+                        <span class="text-nu-gray-300">/ 20</span>
+                    </div>
                 </div>
-            </div>
+            @endif
             <nav class="flex-grow py-10 px-6 text-lg font-medium">
                 <ul class="flex flex-col gap-y-8">
                     @if (Auth::user()->is_admin)
