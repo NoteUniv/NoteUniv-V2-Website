@@ -82,11 +82,11 @@ svg {
 }
 
 .title {
-    @apply relative text-base font-medium w-fit leading-5 pb-1.5 overflow-hidden;
+    @apply relative text-base font-medium w-fit leading-5 pb-2 overflow-hidden;
 
     &::after {
         content: "";
-        @apply absolute bottom-0 left-0 h-0.5 w-8 bg-nu-primary transform -translate-x-full transition-transform duration-200;
+        @apply absolute bottom-0 left-0 h-0.5 w-8 bg-nu-primary transform -translate-x-full transition-transform duration-200 rounded-full;
     }
 
     &--underline::after {

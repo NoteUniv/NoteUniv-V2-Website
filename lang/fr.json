@@ -51,5 +51,16 @@
     "Contact us": "Nous contacter",
     "Terms": "Conditions",
     "Privacy": "Confidentialité",
-    "Accessibility": "Accessibilité"
+    "Accessibility": "Accessibilité",
+
+    "Last grades": "Dernières notes",
+    "View all my grades": "Voir toutes mes notes",
+    "Date": "Date",
+    "Subject": "Matière",
+    "Name of work": "Nom du devoir",
+    "My grade": "Ma note",
+    "Class average": "Moyenne de classe",
+    "View my averages": "Voir mes moyennes",
+    "Position in the ranking": "Position dans le classement",
+    "View the ranking": "Voir le classement"
 }
