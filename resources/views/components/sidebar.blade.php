@@ -19,12 +19,14 @@
             </a>
             <div class="relative">
                 <select name="semesters" id="semester-select" class="appearance-none bg-nu-secondary w-full text-white px-6 py-2 focus:outline-none">
-                    <option value="1">Semester 1</option>
-                    <option value="2">Semester 2</option>
-                    <option value="3">Semester 3</option>
-                    <option value="4">Semester 4</option>
-                    <option value="5">Semester 5</option>
-                    <option value="6">Semester 6</option>
+                    @php
+                        $userData = Auth::user()->data;
+                    @endphp
+                    @for ($i = 1; $i < $userData['max_semester'] + 1; $i++)
+                        <option value="{{ $i }}" @if ($i == $userData['current_semester']) selected @endif>
+                            {{ __('Semester') }} {{ $i }}
+                        </option>
+                    @endfor
                 </select>
                 <div class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white">
                     @svg(chevron-down)

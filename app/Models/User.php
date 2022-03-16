@@ -70,12 +70,34 @@ class User extends Authenticatable
         return $this->student_id !== null;
     }
 
-    public $grades;
+    /**
+     * Get last data from a user using its grades
+     *
+     * @return int
+     */
+    public function getDataAttribute()
+    {
+        $lastGrade = $this->userGrades->sortByDesc('grade_id')->first();
+
+        $lastGradeMecc = $lastGrade->grade->mecc;
+
+        // select max(semester) from mecc where year = lastGradeMecc->year
+        $maxSemester = Mecc::where('year', $lastGradeMecc->year)->max('semester');
+
+        return [
+            'current_semester' => $lastGradeMecc->semester,
+            'max_semester' => $maxSemester,
+            'promo' => $lastGradeMecc->promo,
+            'year' => $lastGradeMecc->year,
+        ];
+    }
 
     public function userGrades()
     {
         return $this->hasMany(UserGrade::class, 'student_id', 'student_id');
     }
+
+    public $grades;
 
     public function grades()
     {
