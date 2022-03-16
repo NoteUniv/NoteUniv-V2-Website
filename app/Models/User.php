@@ -78,10 +78,8 @@ class User extends Authenticatable
     public function getDataAttribute()
     {
         $lastGrade = $this->userGrades->sortByDesc('grade_id')->first();
-
         $lastGradeMecc = $lastGrade->grade->mecc;
 
-        // select max(semester) from mecc where year = lastGradeMecc->year
         $maxSemester = Mecc::where('year', $lastGradeMecc->year)->max('semester');
 
         return [
@@ -172,5 +170,25 @@ class User extends Authenticatable
         $overallAverage = $overallAverage / $allCoefficients;
 
         return $overallAverage;
+    }
+
+    public function averageAllStudents()
+    {
+        $allStudents = UserGrade::select('student_id')
+            ->join('grades', 'grades.id', '=', 'users_grades.grade_id')
+            ->join('mecc', 'mecc.id', '=', 'grades.mecc_id')
+            ->where('mecc.semester', 1)
+            ->where('mecc.promo', $this->data['promo'])
+            ->groupBy('student_id')
+            ->get();
+
+        foreach ($allStudents as $student) {
+            $newStudent = new User([
+                'student_id' => $student->student_id,
+            ]);
+            $allAverages[] = $newStudent->overallAverage();
+        }
+
+        return $allAverages ?? [];
     }
 }
