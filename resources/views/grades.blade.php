@@ -8,6 +8,27 @@
         </h2>
     </x-slot>
 
+    <div class="flex mb-8">
+        <div class="bg-white mr-4 flex items-center rounded-md">
+            <input type="search" placeholder="{{ __('Search...') }}"
+                class="bg-transparent text-nu-secondary px-4 py-2 text-xs border-none">
+            <button class="px-3 h-full">
+                @svg(search-icon)
+            </button>
+        </div>
+        <div class="relative">
+            <select name="semesters" id="semester-select"
+                class="appearance-none bg-white text-nu-secondary pl-4 pr-10 py-2 text-xs rounded-md border-none">
+                <option value="1">{{ __('Select a subject') }}</option>
+                <option value="2">Subject 1</option>
+                <option value="3">Subject 2</option>
+            </select>
+            <div class="absolute right-4 top-1/2 -translate-y-1/2 w-3 h-3 text-nu-secondary pointer-events-none">
+                @svg(chevron-down)
+            </div>
+        </div>
+    </div>
+
     <div class="flex flex-col gap-y-4 md:gap-y-12">
         @php
             $data = Auth::user()->groupGrades();
