@@ -5,7 +5,7 @@
                 <a href="" class="hover:underline">{{ __('Contact us') }}</a>
                 <a href="{{ route('terms.show') }}" class="hover:underline">{{ __('Terms') }}</a>
                 <a href="{{ route('policy.show') }}" class="hover:underline">{{ __('Privacy') }}</a>
-                <a href="" class="hover:underline">{{ __('Accessibility') }}</a>
+                <a href="{{ route('accessibility') }}" class="hover:underline">{{ __('Accessibility') }}</a>
             </nav>
             <div class="flex gap-x-4 text-sm">
                 <a href="#" class="p-1.5 bg-white text-nu-primary">FR</a>

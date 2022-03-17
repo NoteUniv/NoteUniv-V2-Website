@@ -70,3 +70,7 @@ Route::middleware(['auth:sanctum', 'verified', 'admin'])
         '/grades-template',
         [FileController::class, 'downloadGradesTemplate']
     )->name('grades-template');
+
+Route::get('/accessibility', function () {
+    return view('accessibility');
+})->name('accessibility');
