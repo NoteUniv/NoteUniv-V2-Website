@@ -93,12 +93,22 @@ php artisan serve
 
 8. Open http://127.0.0.1:8000 on your browser!
 
+## 👤 Auth
+
+By default, 11 users are created (10 students + 1 admin)
+
+Using `php artisan db:seed`, it will output a specific email and password to login
+
+For the admin account, here are the credentials:
+
+User: bollender\@unistra.fr -> PWD: bollender
+
 ## 🤝 Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change or create a new branch.\
 Please make sure to test your suggestions before committing.
 
-## 👤 Authors
+## 👥 Authors
 
 **Quentin L. & Solène G. & Eloi A.**
 
