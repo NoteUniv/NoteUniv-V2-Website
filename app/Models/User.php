@@ -97,21 +97,28 @@ class User extends Authenticatable
 
     public $grades;
 
-    public function grades()
+    public function grades($full = false)
     {
         $allGrades = Grade::all();
         $allMecc = Mecc::all();
 
-        $grades = $this->userGrades->map(function ($grade) use ($allGrades, $allMecc) {
-            $gradeValue =  $grade->grade_value;
-            $grade = $allGrades->where('id', $grade->grade_id)->first();
-            $gradeCoefficient = $allMecc->where('id', $grade->mecc_id)->first()->coefficient;
+        $grades = $this->userGrades->map(function ($userGrade) use ($full, $allGrades, $allMecc) {
+            $grade = $allGrades->where('id', $userGrade->grade_id)->first();
+            $mecc = $allMecc->where('id', $grade->mecc_id)->first();
 
-            return [
-                'mecc_id' => $grade->mecc_id,
-                'value' => $gradeValue,
-                'coefficient' => $gradeCoefficient,
-            ];
+            if ($full) {
+                return [
+                    'userGrade' => $userGrade,
+                    'grade' => $grade,
+                    'mecc' => $mecc,
+                ];
+            } else {
+                return [
+                    'mecc_id' => $grade->mecc_id,
+                    'value' => $grade->grade_value,
+                    'coefficient' =>  $mecc->coefficient,
+                ];
+            }
         });
 
         $this->grades = $grades;
@@ -244,5 +251,45 @@ class User extends Authenticatable
         }
 
         return [$rank, count($allAverages)];
+    }
+
+    public function groupGrades()
+    {
+        $usersGrades = UserGrade::all();
+
+        $groupedGrades = [];
+        foreach ($this->grades(true) as $data) {
+            $groupedGrades[$data['mecc']->ue][$data['mecc']->id][] = [
+                'value' => $data['userGrade']->grade_value,
+                'gradeMin' => $usersGrades->where('grade_id', $data['grade']->id)->min('grade_value'),
+                'gradeMax' => $usersGrades->where('grade_id', $data['grade']->id)->max('grade_value'),
+                'gradeAvg' => $usersGrades->where('grade_id', $data['grade']->id)->avg('grade_value'),
+                'subjectName' => $data['mecc']->subject_name,
+                'name' => $data['grade']->name,
+                'teacher' => $data['grade']->teacher,
+                'type' => $data['grade']->grade_type,
+                'exam' => $data['grade']->exam_type,
+                'date' => $data['grade']->exam_date,
+            ];
+
+            // $groupedGrades[$data['mecc']->ue][$data['mecc']->id][$data['grade']->id] = [
+            //     'subject_name' => $data['mecc']->subject_name,
+            //     'subject_data' => [],
+            // ];
+
+            // $groupedGrades[$data['mecc']->ue][$data['mecc']->id][$data['grade']->id]['subject_data'] = [
+            //     'value' => $data['userGrade']->grade_value,
+            //     'gradeMin' => $usersGrades->where('grade_id', $data['grade']->id)->min('grade_value'),
+            //     'gradeMax' => $usersGrades->where('grade_id', $data['grade']->id)->max('grade_value'),
+            //     'gradeAvg' => $usersGrades->where('grade_id', $data['grade']->id)->avg('grade_value'),
+            //     'name' => $data['grade']->name,
+            //     'teacher' => $data['grade']->teacher,
+            //     'type' => $data['grade']->grade_type,
+            //     'exam' => $data['grade']->exam_type,
+            //     'date' => $data['grade']->exam_date,
+            // ];
+        }
+
+        return $groupedGrades;
     }
 }
