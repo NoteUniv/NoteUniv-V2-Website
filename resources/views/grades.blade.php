@@ -8,15 +8,15 @@
         </h2>
     </x-slot>
 
-    <div class="flex mb-8">
-        <div class="bg-white mr-4 flex items-center rounded-md">
+    <div class="flex flex-col xl:flex-row gap-4 mb-8">
+        <div class="bg-white mr-4 flex items-center rounded-md w-max flex-grow-0">
             <input type="search" placeholder="{{ __('Search...') }}"
                 class="bg-transparent text-nu-secondary px-4 py-2 text-xs border-none">
             <button class="px-3 h-full">
                 @svg(search-icon)
             </button>
         </div>
-        <div class="relative">
+        <div class="relative w-max flex-grow-0">
             <select name="semesters" id="semester-select"
                 class="appearance-none bg-white text-nu-secondary pl-4 pr-10 py-2 text-xs rounded-md border-none">
                 <option value="1">{{ __('Select a subject') }}</option>
