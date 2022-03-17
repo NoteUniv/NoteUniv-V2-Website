@@ -45,6 +45,7 @@
                     <p class="mb-2">{{ __('Overall average') }}</p>
                     <div>
                         {{-- <span class="text-grade text-2xl">{{ number_format(Auth::user()->overallAverage(), 2) }}</span> --}}
+                        <span class="text-grade text-2xl">15</span>
                         <span class="text-nu-gray-300">/ 20</span>
                     </div>
                 </div>
