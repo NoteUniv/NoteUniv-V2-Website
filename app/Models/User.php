@@ -104,6 +104,7 @@ class User extends Authenticatable
 
         $grades = $this->userGrades->map(function ($userGrade) use ($full, $allGrades, $allMecc) {
             $grade = $allGrades->where('id', $userGrade->grade_id)->first();
+            $grade->grade_value = $userGrade->grade_value;
             $mecc = $allMecc->where('id', $grade->mecc_id)->first();
 
             if ($full) {
