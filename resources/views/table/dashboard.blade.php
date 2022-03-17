@@ -1,4 +1,4 @@
-<tr class="h-12 border-b border-nu-gray-200 text-sm">
+<tr class="h-12 border-b border-nu-gray-200 text-sm cursor-pointer hover:bg-nu-gray-100" @click="window.location.href = '{{ route('grades') }}' + '?id=' + {{ $row['grade_id'] }}">
     <td class="px-4 text-xs font-semibold hidden md:table-cell whitespace-nowrap" :class="{'!table-cell': isOpen}">
         {{ date('d/m/Y', strtotime($row['date'])) }}</td>
     <td class="px-4 hidden md:table-cell" :class="{'!table-cell': isOpen}">

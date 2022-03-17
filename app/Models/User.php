@@ -183,6 +183,7 @@ class User extends Authenticatable
             $lastGrades[$data['grade']->id] = [
                 'date' => $data['grade']->exam_date,
                 'subject_name' => $data['mecc']->subject_code ?? $data['mecc']->subject_name,
+                'grade_id' => $data['grade']->id,
                 'grade_name' => $data['grade']->name,
                 'grade_value' => $data['userGrade']->grade_value,
                 'class_avg' => $usersGrades->where('grade_id', $data['grade']->id)->avg('grade_value')
@@ -278,6 +279,7 @@ class User extends Authenticatable
                 'gradeMax' => $usersGrades->where('grade_id', $data['grade']->id)->max('grade_value'),
                 'gradeAvg' => $usersGrades->where('grade_id', $data['grade']->id)->avg('grade_value'),
                 'subjectName' => $data['mecc']->subject_name,
+                'subjectCoef' => $data['mecc']->coefficient,
                 'name' => $data['grade']->name,
                 'teacher' => $data['grade']->teacher,
                 'type' => $data['grade']->grade_type,
@@ -306,6 +308,7 @@ class User extends Authenticatable
         foreach ($groupedGrades as $ue => $ueData) {
             foreach ($ueData as $meccId => $studentData) {
                 $subjectName = $groupedGrades[$ue][$meccId][0]['subjectName'];
+                $subjectCoef = $groupedGrades[$ue][$meccId][0]['subjectCoef'];
 
                 $subjectAvg = 0;
                 $classAvg = 0;
@@ -325,6 +328,7 @@ class User extends Authenticatable
 
                 $groupedGrades[$ue][$meccId][] = [
                     'subjectName' => $subjectName,
+                    'subjectCoef' => $subjectCoef,
                     'subjectAvg' => $subjectAvg,
                     'classAvg' => $classAvg,
                     'classMin' => $classMin,
