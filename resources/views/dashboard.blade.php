@@ -46,8 +46,8 @@
             <div class="box box--small min-w-[220px] aspect-square md:flex-grow flex flex-col justify-between">
                 <h2 class="title title--underline">{{ __('Overall average') }}</h2>
                 <div class="text-center">
-                    {{-- <span class="text-grade text-5xl xl:text-4xl">{{ number_format(Auth::user()->overallAverage(), 2) }}</span> --}}
-                    <span class="text-grade text-5xl xl:text-4xl">15</span>
+                    <span
+                        class="text-grade text-5xl xl:text-4xl">{{ number_format(Auth::user()->overallAverage(), 2) }}</span>
                     <span class="text-nu-gray-300 text-xl">/ 20</span>
                 </div>
                 <a href="{{ route('grades') }}" class="btn-link w-full">

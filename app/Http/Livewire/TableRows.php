@@ -22,6 +22,7 @@ class TableRows extends Component
     public function showMore()
     {
         $this->max = $this->max + $this->increment;
+        $this->dispatchBrowserEvent('show-more');
     }
 
     public function render()
