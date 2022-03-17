@@ -1,40 +1,41 @@
 <x-guest-layout>
-    <div class="m-auto flex flex-col justify-center items-center gap-y-12 md:gap-y-16 xl:gap-y-10 py-8 min-h-screen">
+    <div class="m-auto flex flex-col justify-center items-center gap-y-12 py-24 md:gap-y-16 xl:gap-y-10 xl:py-8 min-h-screen">
         <div class="flex">
             <h1 class="text-4xl capitalize w-fit font-bold tracking-wide">{{ __('Register') }}</h1>
         </div>
         <x-jet-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('register') }}"
-            class="flex flex-col gap-y-6 bg-white shadow-drop p-6 text-sm w-[90vw] max-w-[450px] xl:min-w-[350px] xl:w-[35vw] xl:max-w-[550px]">
+        <p class="absolute items-center top-[5vw] right-[5vw] xl:top-[2vw] xl:right-[2vw]">
+            @foreach (Config::get('languages') as $lang => $language)
+                @if ($lang == App::getLocale())
+                    <a href="{{ route('lang.switch', $lang) }}" class="p-1.5 bg-nu-primary text-white ml-2">{{ $language }}</a>
+                @else
+                    <a href="{{ route('lang.switch', $lang) }}" class="p-1.5 transition-colors duration-200 ml-2 hover:bg-white hover:text-nu-primary hover:shadow-drop">{{ $language }}</a>
+                @endif
+            @endforeach
+        </p>
+
+        <form method="POST" action="{{ route('register') }}" class="flex flex-col gap-y-6 bg-white shadow-drop p-6 text-sm w-[90vw] max-w-[450px] xl:min-w-[350px] xl:w-[35vw] xl:max-w-[550px]">
             @csrf
 
             <div>
                 <x-jet-label for="student_id" value="{{ __('Student ID') }}" />
-                <x-jet-input id="student_id" type="number" name="student_id" :value="old('student_id')" minlength="8"
-                    maxlength="8" placeholder="12345678" required autofocus autocomplete="student_id"
-                    class="input py-2 pr-4 outline-2 outline-nu-primary focus:outline placeholder:text-nu-gray-300 rounded-md" />
+                <x-jet-input id="student_id" type="number" name="student_id" :value="old('student_id')" minlength="8" maxlength="8" placeholder="12345678" required autofocus autocomplete="student_id" class="input py-2 pr-4 outline-2 outline-nu-primary focus:outline placeholder:text-nu-gray-300 rounded-md" />
             </div>
 
             <div>
                 <x-jet-label for="email" value="{{ __('Email Unistra') }}" />
-                <x-jet-input id="email" type="email" name="email" :value="old('email')"
-                    placeholder="{{ __('student@etu.unistra.fr') }}" required
-                    class="input py-2 pr-4 outline-2 outline-nu-primary focus:outline placeholder:text-nu-gray-300 rounded-md" />
+                <x-jet-input id="email" type="email" name="email" :value="old('email')" placeholder="{{ __('student@etu.unistra.fr') }}" required class="input py-2 pr-4 outline-2 outline-nu-primary focus:outline placeholder:text-nu-gray-300 rounded-md" />
             </div>
 
             <div>
                 <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" type="password" name="password" required autocomplete="new-password"
-                    placeholder="********"
-                    class="input py-2 pr-4 outline-2 outline-nu-primary focus:outline placeholder:text-nu-gray-300 rounded-md" />
+                <x-jet-input id="password" type="password" name="password" required autocomplete="new-password" placeholder="********" class="input py-2 pr-4 outline-2 outline-nu-primary focus:outline placeholder:text-nu-gray-300 rounded-md" />
             </div>
 
             <div>
                 <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" type="password" placeholder="********"
-                    name="password_confirmation" required autocomplete="new-password"
-                    class="input py-2 pr-4 outline-2 outline-nu-primary focus:outline placeholder:text-nu-gray-300 rounded-md" />
+                <x-jet-input id="password_confirmation" type="password" placeholder="********" name="password_confirmation" required autocomplete="new-password" class="input py-2 pr-4 outline-2 outline-nu-primary focus:outline placeholder:text-nu-gray-300 rounded-md" />
             </div>
 
             <div>
