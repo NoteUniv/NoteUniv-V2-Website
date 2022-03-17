@@ -273,7 +273,7 @@ class User extends Authenticatable
         $groupedGrades = [];
         foreach ($this->grades(true) as $data) {
             $groupedGrades[$data['mecc']->ue][$data['mecc']->id][] = [
-                'value' => $data['userGrade']->grade_value,
+                'gradeValue' => $data['userGrade']->grade_value,
                 'gradeMin' => $usersGrades->where('grade_id', $data['grade']->id)->min('grade_value'),
                 'gradeMax' => $usersGrades->where('grade_id', $data['grade']->id)->max('grade_value'),
                 'gradeAvg' => $usersGrades->where('grade_id', $data['grade']->id)->avg('grade_value'),
@@ -301,6 +301,39 @@ class User extends Authenticatable
             //     'exam' => $data['grade']->exam_type,
             //     'date' => $data['grade']->exam_date,
             // ];
+        }
+
+        foreach ($groupedGrades as $ue => $ueData) {
+            foreach ($ueData as $meccId => $studentData) {
+                $subjectName = $groupedGrades[$ue][$meccId][0]['subjectName'];
+
+                $subjectAvg = 0;
+                $classAvg = 0;
+                $classMin = 0;
+                $classMax = 0;
+                foreach ($studentData as $grade) {
+                    $subjectAvg += $grade['gradeValue'];
+                    $classAvg += $grade['gradeAvg'];
+                    $classMin += $grade['gradeMin'];
+                    $classMax += $grade['gradeMax'];
+                }
+
+                $subjectAvg /= count($studentData);
+                $classAvg /= count($studentData);
+                $classMin /= count($studentData);
+                $classMax /= count($studentData);
+
+                $groupedGrades[$ue][$meccId][] = [
+                    'subjectName' => $subjectName,
+                    'subjectAvg' => $subjectAvg,
+                    'classAvg' => $classAvg,
+                    'classMin' => $classMin,
+                    'classMax' => $classMax,
+                    'studentData' => $studentData,
+                ];
+
+                $groupedGrades[$ue][$meccId] = array_slice($groupedGrades[$ue][$meccId], count($groupedGrades[$ue][$meccId]) - 1);
+            }
         }
 
         return $groupedGrades;
