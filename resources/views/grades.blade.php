@@ -12,38 +12,46 @@
         @php
             $data = Auth::user()->groupGrades();
             ksort($data);
+            // dd($data);
         @endphp
         @foreach ($data as $ue_id => $subjects)
             <div class="box" x-data="{isOpen: true}">
                 <div class="flex justify-between items-center cursor-pointer p-4 xl:p-6" @click="isOpen = !isOpen">
                     <h2 class="title" :class="{'title--underline': isOpen}">UE{{ $ue_id }}</h2>
-                    <span class="w-4 h-4 xl:mr-6 transform transition-transform duration-200" :class="{'-rotate-180': isOpen}">
+                    <span class="w-4 h-4 xl:mr-6 transform transition-transform duration-200"
+                        :class="{'-rotate-180': isOpen}">
                         @svg(chevron-down)
                     </span>
                 </div>
                 <div x-cloak x-show="isOpen" class="flex flex-col gap-y-6 px-4 pb-4 pt-2 xl:px-6 xl:pb-6 xl:pt-2">
-                    @foreach ($subjects as $subject_id => $subject)
+                    @foreach ($subjects as $subject_id => $temp)
                         @php
-                            $subject_name = $subject[0]['subjectName'];
+                            $subject = $temp[0];
                         @endphp
-                        <div x-data="{isOpen: true, desktopVersion: false}">
+                        <div x-data="{isOpen: false, desktopVersion: false}">
                             <div class="relative" :class="{'overflow-x-auto': isOpen}">
-                                <span class="hidden xl:inline absolute right-6 top-4 w-4 h-4 text-white transform transition-transform duration-200 pointer-events-none" :class="{'-rotate-180': isOpen}">@svg(chevron-down)</span>
+                                <span
+                                    class="hidden xl:inline absolute right-6 top-4 w-4 h-4 text-white transform transition-transform duration-200 pointer-events-none"
+                                    :class="{'-rotate-180': isOpen}">@svg(chevron-down)</span>
                                 <table class="table w-full border-collapse whitespace-nowrap">
                                     <thead>
-                                        <tr class="h-12 text-base bg-nu-primary text-white cursor-pointer" @click="isOpen = !isOpen; desktopVersion = false">
-                                            <th class="font-semibold text-left px-4 w-3/6 max-w-0 overflow-hidden overflow-ellipsis">
-                                                {{ $subject_name }}</th>
+                                        <tr class="h-12 text-base bg-nu-primary text-white cursor-pointer transition-colors duration-200 hover:bg-nu-primary/50"
+                                            @click="isOpen = !isOpen; desktopVersion = false">
+                                            <th
+                                                class="font-semibold text-left px-4 w-3/6 max-w-0 overflow-hidden overflow-ellipsis">
+                                                {{ $subject['subjectName'] }}</th>
                                             <th class="font-semibold px-4 w-1/6" :class="{'min-w-[100px]': isOpen}">
                                                 {{ __('Student') }}</th>
-                                            <th class="font-semibold px-4 w-2/6 hidden xl:table-cell" :class="{'min-w-[250px]': isOpen, '!table-cell': desktopVersion}">
+                                            <th class="font-semibold px-4 w-2/6 hidden xl:table-cell"
+                                                :class="{'min-w-[250px]': isOpen, '!table-cell': desktopVersion}">
                                                 {{ __('Class') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr x-cloak x-show="isOpen">
                                             <td colspan="3">
-                                                <table class="w-full border-collapse border-l border-b border-r border-nu-gray-200">
+                                                <table
+                                                    class="w-full border-collapse border-l border-b border-r border-nu-gray-200">
                                                     <thead class="w-full">
                                                         <tr class="h-12 bg-nu-gray-100 text-sm text-nu-primary">
                                                             <th class="font-semibold text-left px-4 w-3/6">
@@ -52,9 +60,11 @@
                                                             <th class="font-semibold px-4 w-1/6 min-w-[100px]">
                                                                 {{ __('Grade') }}
                                                             </th>
-                                                            <th class="font-semibold px-4 w-2/6 min-w-[250px] hidden xl:table-cell" :class="{'!table-cell': desktopVersion}">
+                                                            <th class="font-semibold px-4 w-2/6 min-w-[250px] hidden xl:table-cell"
+                                                                :class="{'!table-cell': desktopVersion}">
                                                                 <div class="flex">
-                                                                    <span class="w-full">{{ __('Average') }}</span>
+                                                                    <span
+                                                                        class="w-full">{{ __('Average') }}</span>
                                                                     <span class="w-full">Min</span>
                                                                     <span class="w-full">Max</span>
                                                                 </div>
@@ -62,38 +72,58 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($subject as $grade_id => $grade)
+                                                        @foreach ($subject['studentData'] as $grade_id => $grade)
                                                             <tr class="h-12 text-sm">
-                                                                <td class="border border-nu-gray-200 px-4 max-w-0 xl:max-w-none overflow-hidden xl:overflow-visible overflow-ellipsis" :class="{'max-w-none overflow-visible': desktopVersion}">
+                                                                <td class="border border-nu-gray-200 px-4 max-w-0 xl:max-w-none overflow-hidden xl:overflow-visible overflow-ellipsis"
+                                                                    :class="{'max-w-none overflow-visible': desktopVersion}">
                                                                     <span>{{ $grade['name'] }}</span>
-                                                                    <button class="relative ml-2 w-5 leading-5 bg-nu-secondary rounded-full cursor-pointer hidden xl:inline-block" :class="{'!inline-block':desktopVersion}" x-data="{isInfoOpen: false}" @click="isInfoOpen = true">
-                                                                        <span class="text-white font-light text-xs text-center">i</span>
-                                                                        <div class="absolute w-max max-w-[180px] -right-2 top-1/2 translate-x-full -translate-y-1/2 text-sm text-nu-primary bg-white rounded-md border-2 border-nu-secondary p-4" x-show="isInfoOpen" @click.stop @click="isInfoOpen = false" @click.outside="isInfoOpen = false">
+                                                                    <button
+                                                                        class="relative ml-2 w-5 leading-5 bg-nu-secondary rounded-full cursor-pointer hidden xl:inline-block"
+                                                                        :class="{'!inline-block':desktopVersion}"
+                                                                        x-data="{isInfoOpen: false}"
+                                                                        @click="isInfoOpen = true">
+                                                                        <span
+                                                                            class="text-white font-light text-xs text-center">i</span>
+                                                                        <div class="absolute w-max max-w-[180px] -right-2 top-1/2 translate-x-full -translate-y-1/2 text-sm text-nu-primary bg-white rounded-md border-2 border-nu-secondary p-4"
+                                                                            x-show="isInfoOpen" @click.stop
+                                                                            @click="isInfoOpen = false"
+                                                                            @click.outside="isInfoOpen = false">
                                                                             Content for modal
                                                                         </div>
                                                                     </button>
                                                                 </td>
-                                                                <td class="border border-nu-gray-200 text-center text-lg px-4 font-semibold text-grade">
-                                                                    {{ $grade['value'] }}</td>
-                                                                <td class="border border-nu-gray-200 px-4 text-center hidden xl:table-cell" :class="{'!table-cell': desktopVersion}">
+                                                                <td
+                                                                    class="border border-nu-gray-200 text-center text-lg px-4 font-semibold text-grade">
+                                                                    {{ number_format($grade['gradeValue'], 2) }}</td>
+                                                                <td class="border border-nu-gray-200 px-4 text-center hidden xl:table-cell"
+                                                                    :class="{'!table-cell': desktopVersion}">
                                                                     <div class="flex">
-                                                                        <span class="w-full">{{ number_format($grade['gradeAvg'], 2) }}</span>
-                                                                        <span class="w-full">{{ number_format($grade['gradeMin'], 2) }}</span>
-                                                                        <span class="w-full">{{ number_format($grade['gradeMax'], 2) }}</span>
+                                                                        <span
+                                                                            class="w-full">{{ number_format($grade['gradeAvg'], 2) }}</span>
+                                                                        <span
+                                                                            class="w-full">{{ number_format($grade['gradeMin'], 2) }}</span>
+                                                                        <span
+                                                                            class="w-full">{{ number_format($grade['gradeMax'], 2) }}</span>
                                                                     </div>
                                                                 </td>
                                                             </tr>
                                                         @endforeach
                                                         <tr class="h-12 text-sm">
-                                                            <td class="text-right px-4 font-semibold border border-nu-gray-200">
+                                                            <td
+                                                                class="text-right px-4 font-semibold border border-nu-gray-200">
                                                                 {{ __('Average') }}</td>
-                                                            <td class="text-center px-4 font-semibold bg-grade text-nu-primary text-lg border border-nu-gray-200">
-                                                                16</td>
-                                                            <td class="text-center px-4 font-semibold border border-nu-gray-200 hidden xl:table-cell" :class="{'!table-cell': desktopVersion}">
+                                                            <td
+                                                                class="text-center px-4 font-semibold bg-grade text-nu-primary text-lg border border-nu-gray-200">
+                                                                {{ number_format($subject['subjectAvg'], 2) }}</td>
+                                                            <td class="text-center px-4 font-semibold border border-nu-gray-200 hidden xl:table-cell"
+                                                                :class="{'!table-cell': desktopVersion}">
                                                                 <div class="flex">
-                                                                    <span class="w-full">12</span>
-                                                                    <span class="w-full">6</span>
-                                                                    <span class="w-full">16</span>
+                                                                    <span
+                                                                        class="w-full">{{ number_format($subject['classAvg'], 2) }}</span>
+                                                                    <span
+                                                                        class="w-full">{{ number_format($subject['classMin'], 2) }}</span>
+                                                                    <span
+                                                                        class="w-full">{{ number_format($subject['classMax'], 2) }}</span>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -101,11 +131,14 @@
                                                 </table>
                                             </td>
                                         </tr>
-                                        <tr class="h-12 text-sm border-l border-b border-r border-nu-gray-200" x-show="!isOpen">
+                                        <tr class="h-12 text-sm border-l border-b border-r border-nu-gray-200"
+                                            x-show="!isOpen">
                                             <td class="text-right px-4 font-semibold">{{ __('Average') }}</td>
-                                            <td class="text-center px4 font-semibold bg-grade text-nu-primary text-lg border-l border-r border-nu-gray-200">
-                                                16</td>
-                                            <td class="text-center px-4 font-semibold hidden xl:table-cell">12</td>
+                                            <td
+                                                class="text-center px4 font-semibold bg-grade text-nu-primary text-lg border-l border-r border-nu-gray-200">
+                                                {{ number_format($subject['subjectAvg'], 2) }}</td>
+                                            <td class="text-center px-4 font-semibold hidden xl:table-cell">
+                                                {{ number_format($subject['classAvg'], 2) }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -114,7 +147,9 @@
                                 <p class="text-xs text-nu-gray-400">
                                     {{ __('Some information are hidden on mobile devices.') }}
                                 </p>
-                                <button class="btn w-full text-xs !font-normal mt-4" @click="desktopVersion = !desktopVersion" x-text="desktopVersion?'{{ __('Hide all details') }}':'{{ __('Show all details') }}'"></button>
+                                <button class="btn w-full text-xs !font-normal mt-4"
+                                    @click="desktopVersion = !desktopVersion"
+                                    x-text="desktopVersion?'{{ __('Hide all details') }}':'{{ __('Show all details') }}'"></button>
                             </div>
                         </div>
                     @endforeach
@@ -145,7 +180,8 @@
                     <h3 class="inline-block font-semibold mb-1 text-center xl:text-left">{{ __('Overall average') }}
                     </h3>
                     <div class="px-12 py-6 bg-grade flex justify-center items-end">
-                        <span class="text-nu-primary font-normal text-4xl mr-1">{{ number_format(Auth::user()->overallAverage(), 2) }}</span>
+                        <span
+                            class="text-nu-primary font-normal text-4xl mr-1">{{ number_format(Auth::user()->overallAverage(), 2) }}</span>
                         <span class="text-nu-gray-400">/ 20</span>
                     </div>
                 </div>
