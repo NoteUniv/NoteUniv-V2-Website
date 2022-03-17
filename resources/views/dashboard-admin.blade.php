@@ -16,28 +16,24 @@
                         <h2 class="title title--underline">MECC</h2>
                         <div class="flex">
                             <div class="bg-nu-gray-100 mr-4 flex items-center rounded-md">
-                                <input type="search" placeholder="{{ __('Search...') }}"
-                                    class="bg-transparent text-nu-secondary px-4 py-2 text-xs border-none">
+                                <input type="search" placeholder="{{ __('Search...') }}" class="bg-transparent text-nu-secondary px-4 py-2 text-xs border-none">
                                 <button class="px-3 h-full">
                                     @svg(search-icon)
                                 </button>
                             </div>
                             <div class="relative">
-                                <select name="semesters" id="semester-select"
-                                    class="appearance-none bg-nu-gray-100 text-nu-secondary pl-4 pr-10 py-2 text-xs rounded-md border-none">
+                                <select name="semesters" id="semester-select" class="appearance-none bg-nu-gray-100 text-nu-secondary pl-4 pr-10 py-2 text-xs rounded-md border-none">
                                     <option value="1">{{ __('Select a promo') }}</option>
                                     <option value="2">Promo 1</option>
                                     <option value="3">Promo 2</option>
                                 </select>
-                                <div
-                                    class="absolute right-4 top-1/2 -translate-y-1/2 w-3 h-3 text-nu-secondary pointer-events-none">
+                                <div class="absolute right-4 top-1/2 -translate-y-1/2 w-3 h-3 text-nu-secondary pointer-events-none">
                                     @svg(chevron-down)
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <table class="w-full border-collapse border-l border-b border-r border-nu-gray-200"
-                        x-data="{filter: '', sort: 0}">
+                    <table class="w-full border-collapse border-l border-b border-r border-nu-gray-200" x-data="{filter: '', sort: 0}">
                         <thead>
                             <tr class="h-12 bg-nu-primary text-sm text-white">
                                 <th>
@@ -75,10 +71,9 @@
                     </table>
                 </div>
                 <div class="pl-6 w-1/3 border-l border-nu-gray-200">
-                    <a href="{{ url('mecc-template') }}"
-                        class="btn h-8 flex items-center justify-center text-sm w-full text-center">
+                    <a href="{{ url('mecc-template') }}" class="btn h-8 flex items-center justify-center text-sm w-full text-center">
                         <span class="inline-block w-3 h-3 mr-3">
-                            @svg(upload-icon)
+                            @svg(download-icon)
                         </span>
                         <span>{{ __('MECC template') }}</span>
                     </a>
@@ -87,12 +82,9 @@
                             {{ session()->get('error') }}
                         @endif
 
-                        <form action="{{ route('upload-mecc') }}" method="post" enctype="multipart/form-data"
-                            id="mecc-upload"
-                            class="dropzone w-full !rounded-none !border-2 !border-nu-gray-400 aspect-square mt-8 flex justify-center items-center transition-colors duration-200 hover:!border-nu-green group">
+                        <form action="{{ route('upload-mecc') }}" method="post" enctype="multipart/form-data" id="mecc-upload" class="dropzone w-full !rounded-none !border-2 !border-nu-gray-400 aspect-square mt-8 flex justify-center items-center transition-colors duration-200 hover:!border-nu-green group">
                             @csrf
-                            <div class="dz-message flex flex-col items-center text-nu-gray-400 text-2xl transition-colors duration-200 group-hover:text-nu-green"
-                                data-dz-message>
+                            <div class="dz-message flex flex-col items-center text-nu-gray-400 text-2xl transition-colors duration-200 group-hover:text-nu-green" data-dz-message>
                                 <span>{{ __('Upload a file') }}</span>
                                 <div class="w-8 h-8 mt-2">
                                     @svg(plus-icon)
@@ -110,28 +102,24 @@
                         <h2 class="title title--underline">{{ __('Grades') }}</h2>
                         <div class="flex">
                             <div class="bg-nu-gray-100 mr-4 flex items-center rounded-md">
-                                <input type="search" placeholder="{{ __('Search...') }}"
-                                    class="bg-transparent text-nu-secondary px-4 py-2 text-xs border-none">
+                                <input type="search" placeholder="{{ __('Search...') }}" class="bg-transparent text-nu-secondary px-4 py-2 text-xs border-none">
                                 <button class="px-3 h-full">
                                     @svg(search-icon)
                                 </button>
                             </div>
                             <div class="relative">
-                                <select name="semesters" id="semester-select"
-                                    class="appearance-none bg-nu-gray-100 text-nu-secondary pl-4 pr-10 py-2 text-xs rounded-md border-none">
+                                <select name="semesters" id="semester-select" class="appearance-none bg-nu-gray-100 text-nu-secondary pl-4 pr-10 py-2 text-xs rounded-md border-none">
                                     <option value="1">{{ __('Select a promo') }}</option>
                                     <option value="2">Promo 1</option>
                                     <option value="3">Promo 2</option>
                                 </select>
-                                <div
-                                    class="absolute right-4 top-1/2 -translate-y-1/2 w-3 h-3 text-nu-secondary pointer-events-none">
+                                <div class="absolute right-4 top-1/2 -translate-y-1/2 w-3 h-3 text-nu-secondary pointer-events-none">
                                     @svg(chevron-down)
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <table class="w-full border-collapse border-l border-b border-r border-nu-gray-200"
-                        x-data="{filter: '', sort: 0}">
+                    <table class="w-full border-collapse border-l border-b border-r border-nu-gray-200" x-data="{filter: '', sort: 0}">
                         <thead>
                             <tr class="h-12 bg-nu-primary text-sm text-white">
                                 <th>
@@ -169,10 +157,9 @@
                     </table>
                 </div>
                 <div class="pl-6 w-1/3 border-l border-nu-gray-200">
-                    <a href="{{ url('grades-template') }}"
-                        class="btn h-8 flex items-center justify-center text-sm w-full text-center">
+                    <a href="{{ url('grades-template') }}" class="btn h-8 flex items-center justify-center text-sm w-full text-center">
                         <span class="inline-block w-3 h-3 mr-3">
-                            @svg(upload-icon)
+                            @svg(download-icon)
                         </span>
                         <span>{{ __('Grades template') }}</span>
                     </a>
@@ -181,12 +168,9 @@
                             {{ session()->get('error') }}
                         @endif
 
-                        <form action="{{ route('upload-grade') }}" method="post" enctype="multipart/form-data"
-                            id="grades-upload"
-                            class="dropzone w-full !rounded-none !border-2 !border-nu-gray-400 aspect-square mt-8 flex justify-center items-center transition-colors duration-200 hover:!border-nu-green group">
+                        <form action="{{ route('upload-grade') }}" method="post" enctype="multipart/form-data" id="grades-upload" class="dropzone w-full !rounded-none !border-2 !border-nu-gray-400 aspect-square mt-8 flex justify-center items-center transition-colors duration-200 hover:!border-nu-green group">
                             @csrf
-                            <div class="dz-message flex flex-col items-center text-nu-gray-400 text-2xl transition-colors duration-200 group-hover:text-nu-green"
-                                data-dz-message>
+                            <div class="dz-message flex flex-col items-center text-nu-gray-400 text-2xl transition-colors duration-200 group-hover:text-nu-green" data-dz-message>
                                 <span>{{ __('Upload a file') }}</span>
                                 <div class="w-8 h-8 mt-2">
                                     @svg(plus-icon)
