@@ -5,6 +5,7 @@
 
 html {
     @apply scroll-smooth;
+
     @screen 2xl {
         font-size: 1.2rem;
     }
@@ -139,4 +140,8 @@ option::-webkit-scrollbar-thumb {
         color-stop(0.2, theme("colors.nu-primary")),
         color-stop(0.8, lighten(#110133, 10%))
     );
+}
+
+select {
+    background-image: none;
 }
