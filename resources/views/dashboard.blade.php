@@ -11,21 +11,15 @@
                 </a>
             </div>
             <div>
-                <table
-                    class="block xl:table w-full overflow-x-auto border-collapse border-l border-b border-r border-nu-gray-200">
+                <table class="block xl:table w-full overflow-x-auto border-collapse border-l border-b border-r border-nu-gray-200">
                     <thead>
                         <tr class="h-12 bg-nu-primary text-sm text-white">
-                            <th class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell"
-                                :class="{'!table-cell': isOpen}">{{ __('Date') }}</th>
-                            <th class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell overflow-hidden"
-                                :class="{'!table-cell': isOpen}">{{ __('Subject') }}</th>
-                            <th class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell"
-                                class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell"
-                                :class="{'!table-cell': isOpen}">{{ __('Subject') }}</th>
+                            <th class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell" :class="{'!table-cell': isOpen}">{{ __('Date') }}</th>
+                            <th class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell overflow-hidden" :class="{'!table-cell': isOpen}">{{ __('Subject') }}</th>
+                            <th class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell" class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell" :class="{'!table-cell': isOpen}">{{ __('Subject') }}</th>
 
                             <th class="font-semibold px-4 whitespace-nowrap">{{ __('My grade') }}</th>
-                            <th class="font-semibold px-4 whitespace-nowrap hidden md:table-cell"
-                                :class="{'!table-cell': isOpen}">{{ __('Class average') }}</th>
+                            <th class="font-semibold px-4 whitespace-nowrap hidden md:table-cell" :class="{'!table-cell': isOpen}">{{ __('Class average') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,8 +28,7 @@
                         @endphp
                         @foreach ($user->lastGrades() as $data)
                             <tr class="h-12 border-b border-nu-gray-200 text-sm">
-                                <td class="px-4 text-xs font-semibold hidden md:table-cell whitespace-nowrap"
-                                    :class="{'!table-cell': isOpen}">{{ $data['date'] }}</td>
+                                <td class="px-4 text-xs font-semibold hidden md:table-cell whitespace-nowrap" :class="{'!table-cell': isOpen}">{{ $data['date'] }}</td>
                                 <td class="px-4 hidden md:table-cell" :class="{'!table-cell': isOpen}">
                                     {{ Str::limit($data['subject_name'], 5) }}</td>
                                 <td class="px-4 overflow-ellipsis overflow-hidden">{{ $data['grade_name'] }}</td>
@@ -47,15 +40,13 @@
                         @endforeach
                     </tbody>
                 </table>
-                <div
-                    class="h-10 border-l border-b border-r border-nu-gray-200 text-xl text-nu-gray-400 bg-nu-gray-100 text-center font-bold tracking-widest cursor-pointer transition-colors duration-200 hover:bg-gray-200 leading-8">
+                <div class="h-10 border-l border-b border-r border-nu-gray-200 text-xl text-nu-gray-400 bg-nu-gray-100 text-center font-bold tracking-widest cursor-pointer transition-colors duration-200 hover:bg-gray-200 leading-8">
                     ...
                 </div>
                 <div class="md:hidden mt-4">
                     <p class="text-xs text-nu-gray-400">{{ __('Some information are hidden on mobile devices.') }}
                     </p>
-                    <button class="btn w-full text-xs !font-normal mt-4" @click="isOpen = !isOpen"
-                        x-text="isOpen?'{{ __('Hide all details') }}':'{{ __('Show all details') }}'"></button>
+                    <button class="btn w-full text-xs !font-normal mt-4" @click="isOpen = !isOpen" x-text="isOpen?'{{ __('Hide all details') }}':'{{ __('Show all details') }}'"></button>
                 </div>
             </div>
         </div>
@@ -63,8 +54,7 @@
             <div class="box box--small min-w-[220px] aspect-square md:flex-grow flex flex-col justify-between">
                 <h2 class="title title--underline">{{ __('Overall average') }}</h2>
                 <div class="text-center">
-                    {{-- <span class="text-grade text-5xl xl:text-4xl">{{ number_format(Auth::user()->overallAverage(), 2) }}</span> --}}
-                    <span class="text-grade text-5xl xl:text-4xl">15</span>
+                    <span class="text-grade text-5xl xl:text-4xl">{{ number_format(Auth::user()->overallAverage(), 2) }}</span>
                     <span class="text-nu-gray-300 text-xl">/ 20</span>
                 </div>
                 <a href="{{ route('grades') }}" class="btn-link w-full">
