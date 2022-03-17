@@ -83,5 +83,8 @@
     "MECC template": "Fichier modèle MECC",
     "Upload a file": "Ajouter un fichier",
 
-    "About": "A propos de"
+    "About": "A propos de",
+    "Grades template": "Fichier modèle note",
+    "Grades": "Notes",
+    "No files": "Aucun fichier"
 }
