@@ -107,19 +107,14 @@ class User extends Authenticatable
             $grade->grade_value = $userGrade->grade_value;
             $mecc = $allMecc->where('id', $grade->mecc_id)->first();
 
-            if ($full) {
-                return [
-                    'userGrade' => $userGrade,
-                    'grade' => $grade,
-                    'mecc' => $mecc,
-                ];
-            } else {
-                return [
-                    'mecc_id' => $grade->mecc_id,
-                    'value' => $grade->grade_value,
-                    'coefficient' =>  $mecc->coefficient,
-                ];
-            }
+            return [
+                'userGrade' => $userGrade,
+                'grade' => $grade,
+                'mecc' => $mecc,
+                'mecc_id' => $grade->mecc_id,
+                'value' => $grade->grade_value,
+                'coefficient' =>  $mecc->coefficient,
+            ];
         });
 
         $this->grades = $grades;
