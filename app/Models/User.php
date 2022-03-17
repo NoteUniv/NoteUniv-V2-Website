@@ -231,4 +231,18 @@ class User extends Authenticatable
 
         return $allAverages ?? [];
     }
+
+    public function getRankAttribute()
+    {
+        $allAverages = $this->averageAllStudents();
+
+        $rank = null;
+        foreach ($allAverages as $key => $data) {
+            if ($data['student_id'] === $this->student_id) {
+                $rank = $key + 1;
+            }
+        }
+
+        return [$rank, count($allAverages)];
+    }
 }

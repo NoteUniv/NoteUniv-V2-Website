@@ -57,8 +57,11 @@
             <div class="box box--small min-w-[220px] aspect-square md:flex-grow flex flex-col justify-between">
                 <h2 class="title title--underline">{{ __('Position in the ranking') }}</h2>
                 <div class="text-center">
-                    <span class="text-nu-primary text-5xl xl:text-4xl">33</span>
-                    <span class="text-nu-gray-300 text-xl">/ 99</span>
+                    @php
+                        $rank = Auth::user()->rank;
+                    @endphp
+                    <span class="text-nu-primary text-5xl xl:text-4xl">{{ $rank[0] }}</span>
+                    <span class="text-nu-gray-300 text-xl">/ {{ $rank[1] }}</span>
                 </div>
                 <a href="{{ route('ranking') }}" class="btn-link w-full">
                     <span>{{ __('View the ranking') }}</span>
