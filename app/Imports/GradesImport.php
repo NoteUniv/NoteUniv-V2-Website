@@ -69,6 +69,14 @@ class GradesImport implements ToCollection, WithMultipleSheets
                 ]);
             }
         }
+
+        $allUsers = User::all();
+        $users = UserGrade::where('grade_id', $gradeId)->pluck('student_id');
+        foreach ($allUsers as $user) {
+            if ($users->contains($user->student_id)) {
+                mail($user->email, 'Nouvelle note', 'Vous avez reçu une nouvelle note!');
+            }
+        }
     }
 
     /**
