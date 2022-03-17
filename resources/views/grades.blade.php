@@ -59,7 +59,9 @@
                                             @click="isOpen = !isOpen; desktopVersion = false">
                                             <th
                                                 class="font-semibold text-left px-4 w-3/6 max-w-0 overflow-hidden overflow-ellipsis">
-                                                {{ $subject['subjectName'] }}</th>
+                                                {{ $subject['subjectName'] }} <span class="text-xs">(Coeff
+                                                    {{ $subject['subjectCoef'] }})</span>
+                                            </th>
                                             <th class="font-semibold px-4 w-1/6" :class="{'min-w-[100px]': isOpen}">
                                                 {{ __('Student') }}</th>
                                             <th class="font-semibold px-4 w-2/6 hidden xl:table-cell"

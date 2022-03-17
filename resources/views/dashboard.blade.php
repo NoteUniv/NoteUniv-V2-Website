@@ -12,16 +12,16 @@
             </div>
             <div>
                 <table
-                    class="block xl:table w-full overflow-x-auto border-collapse border-l border-b border-r border-nu-gray-200">
+                    class="block xl:table w-full md:overflow-x-auto border-collapse border-l border-b border-r border-nu-gray-200"
+                    :class="{'overflow-x-auto': isOpen}">
                     <thead>
                         <tr class="h-12 bg-nu-primary text-sm text-white">
                             <th class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell"
                                 :class="{'!table-cell': isOpen}">{{ __('Date') }}</th>
                             <th class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell overflow-hidden"
                                 :class="{'!table-cell': isOpen}">{{ __('Subject') }}</th>
-                            <th class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell"
-                                class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell"
-                                :class="{'!table-cell': isOpen}">{{ __('Subject') }}</th>
+                            <th class="font-semibold px-4 text-left whitespace-nowrap">
+                                {{ __('Name of work') }}</th>
 
                             <th class="font-semibold px-4 whitespace-nowrap">{{ __('My grade') }}</th>
                             <th class="font-semibold px-4 whitespace-nowrap hidden md:table-cell"
