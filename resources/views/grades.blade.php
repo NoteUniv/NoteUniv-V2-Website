@@ -9,7 +9,11 @@
     </x-slot>
 
     <div class="flex flex-col gap-y-4 md:gap-y-12">
-        @foreach (Auth::user()->groupGrades() as $ue_id => $subjects)
+        @php
+            $data = Auth::user()->groupGrades();
+            ksort($data);
+        @endphp
+        @foreach ($data as $ue_id => $subjects)
             <div class="box" x-data="{isOpen: true}">
                 <div class="flex justify-between items-center cursor-pointer p-4 xl:p-6" @click="isOpen = !isOpen">
                     <h2 class="title" :class="{'title--underline': isOpen}">UE{{ $ue_id }}</h2>
@@ -23,7 +27,7 @@
                         @php
                             $subject_name = $subject[0]['subjectName'];
                         @endphp
-                        <div x-data="{isOpen: false, desktopVersion: false}">
+                        <div x-data="{isOpen: true, desktopVersion: false}">
                             <div class="relative" :class="{'overflow-x-auto': isOpen}">
                                 <span
                                     class="hidden xl:inline absolute right-6 top-4 w-4 h-4 text-white transform transition-transform duration-200 pointer-events-none"
