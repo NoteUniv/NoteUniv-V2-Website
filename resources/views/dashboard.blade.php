@@ -28,14 +28,14 @@
                         @endphp
                         @foreach ($user->lastGrades() as $data)
                             <tr class="h-12 border-b border-nu-gray-200 text-sm">
-                                <td class="px-4 text-xs font-semibold hidden md:table-cell whitespace-nowrap" :class="{'!table-cell': isOpen}">{{ $data['date'] }}</td>
+                                <td class="px-4 text-xs font-semibold hidden md:table-cell whitespace-nowrap" :class="{'!table-cell': isOpen}">{{ date('d/m/Y', strtotime($data['date'])) }}</td>
                                 <td class="px-4 hidden md:table-cell" :class="{'!table-cell': isOpen}">
-                                    {{ Str::limit($data['subject_name'], 5) }}</td>
+                                    {{ Str::limit($data['subject_name'], 10) }}</td>
                                 <td class="px-4 overflow-ellipsis overflow-hidden">{{ $data['grade_name'] }}</td>
-                                <td class="px-4 text-center font-semibold text-nu-green">{{ $data['grade_value'] }}
+                                <td class="px-4 text-center font-semibold text-grade">{{ $data['grade_value'] }}
                                 </td>
                                 <td class="px-4 text-center hidden md:table-cell" :class="{'!table-cell': isOpen}">
-                                    {{ $data['class_avg'] }}</td>
+                                    {{ number_format($data['class_avg'], 2) }}</td>
                             </tr>
                         @endforeach
                     </tbody>
