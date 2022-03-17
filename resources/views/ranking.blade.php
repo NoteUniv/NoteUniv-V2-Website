@@ -5,7 +5,7 @@
     <div class="box box--big col-start-2 col-span-8">
         <div class="flex flex-col md:flex-row justify-between mb-1 items-center">
             <a href="#current" class="btn text-center mb-4 px-6 md:mb-0">{{ __('Go to my rank') }}</a>
-            <a href="" class="btn-link">{{ __('Remove me from the ranking') }}</a>
+            <a href="{{ route('profile.show') }}" class="  btn-link">{{ __('Remove me from the ranking') }}</a>
         </div>
         <div class="sticky top-0 h-6 bg-white w-full outline outline-1 outline-white"></div>
         <table class="w-full border-collapse">
