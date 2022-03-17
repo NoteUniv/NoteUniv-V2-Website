@@ -23,7 +23,7 @@
         <p class="text-xs text-nu-gray-400">{{ __('Want to name a color?') }} <a href="https://colornames.org/random" target="_blank">{{ __('Click here!') }}</a></p>
 
         <div class="flex flex-col items-center m-5">
-            <a href="{{ route('dashboard-admin') }}" class="btn-link mt-3">
+            <a href="{{ route('login') }}" class="btn-link mt-3">
                 <span>{{ __('Back to home page') }}</span>
             </a>
         </div>
