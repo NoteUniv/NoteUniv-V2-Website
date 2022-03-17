@@ -15,7 +15,7 @@
                     <thead>
                         <tr class="h-12 bg-nu-primary text-sm text-white">
                             <th class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell" :class="{'!table-cell': isOpen}">{{ __('Date') }}</th>
-                            <th class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell" :class="{'!table-cell': isOpen}">{{ __('Subject') }}</th>
+                            <th class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell overflow-hidden" :class="{'!table-cell': isOpen}">{{ __('Subject') }}</th>
                             <th class="font-semibold px-4 text-left w-full whitespace-nowrap">{{ __('Name of work') }}
                             </th>
                             <th class="font-semibold px-4 whitespace-nowrap">{{ __('My grade') }}</th>
@@ -23,15 +23,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php for ($i = 0; $i < 5; $i++) : ?>
-                        <tr class="h-12 border-b border-nu-gray-200 text-sm">
-                            <td class="px-4 text-xs font-semibold hidden md:table-cell" :class="{'!table-cell': isOpen}">14/03/2022</td>
-                            <td class="px-4 hidden md:table-cell" :class="{'!table-cell': isOpen}">com</td>
-                            <td class="px-4 overflow-ellipsis overflow-hidden">Controle</td>
-                            <td class="px-4 text-center font-semibold text-nu-green">18</td>
-                            <td class="px-4 text-center hidden md:table-cell" :class="{'!table-cell': isOpen}">11.5</td>
-                        </tr>
-                        <?php endfor; ?>
+                        @php
+                            $user = Auth::user();
+                        @endphp
+                        @foreach ($user->lastGrades() as $data)
+                            <tr class="h-12 border-b border-nu-gray-200 text-sm">
+                                <td class="px-4 text-xs font-semibold hidden md:table-cell whitespace-nowrap" :class="{'!table-cell': isOpen}">{{ $data['date'] }}</td>
+                                <td class="px-4 hidden md:table-cell" :class="{'!table-cell': isOpen}">{{ Str::limit($data['subject_name'], 5) }}</td>
+                                <td class="px-4 overflow-ellipsis overflow-hidden">{{ $data['grade_name'] }}</td>
+                                <td class="px-4 text-center font-semibold text-nu-green">{{ $data['grade_value'] }}</td>
+                                <td class="px-4 text-center hidden md:table-cell" :class="{'!table-cell': isOpen}">{{ $data['class_avg'] }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
                 <div class="h-10 border-l border-b border-r border-nu-gray-200 text-xl text-nu-gray-400 bg-nu-gray-100 text-center font-bold tracking-widest cursor-pointer transition-colors duration-200 hover:bg-gray-200 leading-8">
@@ -43,11 +46,11 @@
                 </div>
             </div>
         </div>
-        <div class="self-start flex flex-col md:flex-row xl:flex-col w-full gap-4 xl:sticky xl:top-4 xl:w-[14vw]">
+        <div class="self-start flex flex-col md:flex-row xl:flex-col w-full gap-4 xl:sticky xl:top-4 xl:w-1/4">
             <div class="box box--small min-w-[220px] aspect-square md:flex-grow flex flex-col justify-between">
                 <h2 class="title title--underline">{{ __('Overall average') }}</h2>
                 <div class="text-center">
-                    <span class="text-grade text-5xl xl:text-4xl">{{ number_format(Auth::user()->overallAverage(), 2) }}</span>
+                    {{-- <span class="text-grade text-5xl xl:text-4xl">{{ number_format(Auth::user()->overallAverage(), 2) }}</span> --}}
                     <span class="text-nu-gray-300 text-xl">/ 20</span>
                 </div>
                 <a href="{{ route('grades') }}" class="btn-link w-full">
