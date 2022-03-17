@@ -334,6 +334,18 @@ class User extends Authenticatable
 
                 $groupedGrades[$ue][$meccId] = array_slice($groupedGrades[$ue][$meccId], count($groupedGrades[$ue][$meccId]) - 1);
             }
+
+            $ueAvg = 0;
+            foreach ($groupedGrades[$ue] as $meccId => $meccData) {
+                $ueAvg += $meccData[0]['subjectAvg'];
+            }
+            $ueAvg /= count($groupedGrades[$ue]);
+
+            $groupedGrades[$ue] = [
+                'ueId' => $ue,
+                'ueData' => $groupedGrades[$ue],
+                'ueAvg' => $ueAvg,
+            ];
         }
 
         return $groupedGrades;
