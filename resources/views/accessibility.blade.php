@@ -6,18 +6,14 @@
             </div>
 
             <div class="w-full sm:max-w-2xl mt-6 p-6 bg-white shadow-md overflow-hidden sm:rounded-lg prose">
-                <h2 class="text-4xl my-10 text-center">Déclaration d'accessibilité</h2>
+                <h2 class="text-4xl my-10 text-center">Déclaration d’accessibilité</h2>
 
                 <p class="my-3">NoteUniv s’engage à rendre ses sites internet, intranet, extranet et ses progiciels
                     accessibles (et ses
                     applications mobiles et mobilier urbain numérique) conformément à l’article 47 de la loi n°2005-102
                     du 11 février 2005.</p>
 
-                @if (Auth::user()->is_admin)
-                    <p class="my-3">Cette déclaration d’accessibilité s’applique à <a href="{{ route('dashboard-admin') }}">https://noteuniv.lienhardt.etu.mmi-unistra.fr/</a>.</p>
-                @else
-                    <p class="my-3">Cette déclaration d’accessibilité s’applique à <a href="{{ route('dashboard') }}">https://noteuniv.lienhardt.etu.mmi-unistra.fr/</a>.</p>
-                @endif
+                <p class="my-3">Cette déclaration d’accessibilité s’applique à <a href="{{ route('login') }}">https://noteuniv.lienhardt.etu.mmi-unistra.fr/</a>.</p>
                 <h3 class="text-3xl mt-10">État de conformité</h3>
 
                 <p class="my-3">NoteUniv est totalement en grande partie conforme avec le référentiel général
@@ -34,7 +30,7 @@
 
                 <h3 class="text-3xl mt-10">Contenus non accessibles</h3>
                 <h4 class="text-xl mt-5 font-bold">Non-conformités</h4>
-                <p>Le menu utilisateur lorqu'on est étudiant n'est pas navigable avec le clavier. Pour toute question sur cette démarche, vous pouvez nous contacter via le formulaire de contact. La version 2023 respectera les critères du RGAA sur les contenus additionnels
+                <p>Le menu utilisateur lorqu’on est étudiant n’est pas navigable avec le clavier. Pour toute question sur cette démarche, vous pouvez nous contacter via le formulaire de contact. La version 2023 respectera les critères du RGAA sur les contenus additionnels
                     apparaissant via les styles
                     CSS.</p>
 
@@ -114,7 +110,13 @@
                 </ul>
             </div>
 
-            @if (Auth::user()->is_admin)
+            @if (Auth::user() === null)
+                <div class="flex flex-col items-center m-5">
+                    <a href="{{ url()->previous() }}" class="btn-link mt-3">
+                        <span>{{ __('Back to last page') }}</span>
+                    </a>
+                </div>
+            @elseif (Auth::user()->is_admin)
                 <div class="flex flex-col items-center m-5">
                     <a href="{{ route('dashboard-admin') }}" class="btn-link mt-3">
                         <span>{{ __('Back to Admin dashboard') }}</span>

@@ -13,6 +13,7 @@
     "Log in": "Se connecter",
 
     "Login": "Connexion",
+    "Whoops! Something went wrong.": "Ooooups ! Quelque chose s'est mal passé.",
     "Your unistra email": "Votre email unistra",
     "Your password": "Votre mot de passe",
     "Forgot your password?": "Mot de passe oublié ?",
@@ -98,6 +99,7 @@
     "Send": "Envoyer",
     "Back to dashboard": "Retour au tableau de bord",
     "Back to Admin dashboard": "Retour au panel administrateur",
+    "Back to last page": "Retour à la page précédente",
 
     "Teacher": "Enseignant",
     "Work type": "Type de d'examen",

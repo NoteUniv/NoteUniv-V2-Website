@@ -9,7 +9,13 @@
                 {!! $terms !!}
             </div>
 
-            @if (Auth::user()->is_admin)
+            @if (Auth::user() === null)
+                <div class="flex flex-col items-center m-5">
+                    <a href="{{ url()->previous() }}" class="btn-link mt-3">
+                        <span>{{ __('Back to last page') }}</span>
+                    </a>
+                </div>
+            @elseif (Auth::user()->is_admin)
                 <div class="flex flex-col items-center m-5">
                     <a href="{{ route('dashboard-admin') }}" class="btn-link mt-3">
                         <span>{{ __('Back to Admin dashboard') }}</span>
