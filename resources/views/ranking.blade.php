@@ -17,15 +17,18 @@
                 </tr>
             </thead>
             <tbody>
-                <?php for ($i = 0; $i < 20; $i++) : ?>
-                <tr class="h-12 text-center <?php if ($i == 3) {
-    echo 'text-nu-green font-semibold scroll-mt-20" id="current';
-} ?>">
-                    <td class="border border-nu-gray-200"><?php echo $i + 1; ?></td>
-                    <td class="border border-nu-gray-200">12702031</td>
-                    <td class="border border-nu-gray-200"><?php echo 20 - $i; ?></td>
-                </tr>
-                <?php endfor; ?>
+                @php
+                    $user = Auth::user();
+                @endphp
+                @foreach ($user->averageAllStudents() as $data)
+                    @if ($data['rank'])
+                        <tr class="h-12 text-center" @if ($data['student_id'] == $user->student_id) x-data :class="'text-nu-green font-semibold scroll-mt-20'" id="current" @endif>
+                            <td class="border border-nu-gray-200">{{ $data['rank'] }}</td>
+                            <td class="border border-nu-gray-200">{{ $data['student_id'] }}</td>
+                            <td class="border border-nu-gray-200">{{ number_format($data['student_avg'], 2) }}</td>
+                        </tr>
+                    @endif
+                @endforeach
             </tbody>
         </table>
     </div>

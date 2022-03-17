@@ -70,12 +70,32 @@ class User extends Authenticatable
         return $this->student_id !== null;
     }
 
-    public $grades;
+    /**
+     * Get last data from a user using its grades
+     *
+     * @return int
+     */
+    public function getDataAttribute()
+    {
+        $lastGrade = $this->userGrades->sortByDesc('grade_id')->first();
+        $lastGradeMecc = $lastGrade->grade->mecc;
+
+        $maxSemester = Mecc::where('year', $lastGradeMecc->year)->max('semester');
+
+        return [
+            'current_semester' => $lastGradeMecc->semester,
+            'max_semester' => $maxSemester,
+            'promo' => $lastGradeMecc->promo,
+            'year' => $lastGradeMecc->year,
+        ];
+    }
 
     public function userGrades()
     {
         return $this->hasMany(UserGrade::class, 'student_id', 'student_id');
     }
+
+    public $grades;
 
     public function grades()
     {
@@ -150,5 +170,65 @@ class User extends Authenticatable
         $overallAverage = $overallAverage / $allCoefficients;
 
         return $overallAverage;
+    }
+
+    public function averageAllStudents()
+    {
+        $allUsers = User::all();
+
+        $allStudents = UserGrade::select('student_id')
+            ->join('grades', 'grades.id', '=', 'users_grades.grade_id')
+            ->join('mecc', 'mecc.id', '=', 'grades.mecc_id')
+            ->where('mecc.semester', 1)
+            ->where('mecc.promo', $this->data['promo'])
+            ->groupBy('student_id')
+            ->get();
+
+        foreach ($allStudents as $student) {
+            // $existingStudent = $allUsers->where('student_id', $student->student_id)->first();
+            // if ($existingStudent) {
+            //     if ($existingStudent->is_ranked) {
+            //         $allAverages[] = [
+            //             'student_id' => $existingStudent->student_id,
+            //             'student_avg' => $existingStudent->overallAverage(),
+            //         ];
+            //     } else {
+            //         $allAverages[] = [
+            //             'student_id' => null,
+            //             'student_avg' => null,
+            //         ];
+            //     }
+            // } else {
+            //     $newStudent = new User([
+            //         'student_id' => $student->student_id,
+            //     ]);
+            //     $allAverages[] = [
+            //         'student_id' => $newStudent->student_id,
+            //         'student_avg' => $newStudent->overallAverage(),
+            //     ];
+            // }
+            $newStudent = new User([
+                'student_id' => $student->student_id,
+            ]);
+            $allAverages[] = [
+                'student_id' => $newStudent->student_id,
+                'student_avg' => $newStudent->overallAverage(),
+            ];
+        }
+
+        usort($allAverages, function ($a, $b) {
+            return $a['student_avg'] < $b['student_avg'];
+        });
+
+        foreach ($allAverages as $key => $data) {
+            $existingStudent = $allUsers->where('student_id', $data['student_id'])->first();
+            if ($existingStudent && $existingStudent->is_ranked) {
+                $allAverages[$key]['rank'] = $key + 1;
+            } else {
+                $allAverages[$key]['rank'] = null;
+            }
+        }
+
+        return $allAverages ?? [];
     }
 }

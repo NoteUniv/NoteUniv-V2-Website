@@ -18,8 +18,6 @@ class UserGradeFactory extends Factory
     public function definition()
     {
         return [
-            'student_id' => 21901316,
-            'grade_id' => Grade::factory(),
             'grade_value' => $this->faker->randomFloat(2, 0, 20),
         ];
     }

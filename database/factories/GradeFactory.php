@@ -17,9 +17,8 @@ class GradeFactory extends Factory
      */
     public function definition()
     {
-        $mecc = Mecc::all()->toArray();
         return [
-            'mecc_id' => $mecc[array_rand($mecc)]['id'],
+            'mecc_id' =>  Mecc::all()->random()->id,
             'name' => $this->faker->words(4, true),
             'teacher' => $this->faker->name(),
             'grade_type' => $this->faker->randomElement(['Ecrit', 'Oral', 'Rapport', 'TP Test']),
