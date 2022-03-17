@@ -179,6 +179,23 @@ class User extends Authenticatable
         return $overallAverage;
     }
 
+    public function lastGrades()
+    {
+        $usersGrades = UserGrade::all()->sortByDesc('exam_date');
+
+        foreach ($this->grades(true) as $data) {
+            $lastGrades[$data['grade']->id] = [
+                'date' => $data['grade']->exam_date,
+                'subject_name' => $data['mecc']->subject_code ?? $data['mecc']->subject_name,
+                'grade_name' => $data['grade']->name,
+                'grade_value' => $data['userGrade']->grade_value,
+                'class_avg' => $usersGrades->where('grade_id', $data['grade']->id)->avg('grade_value')
+            ];
+        }
+
+        return $lastGrades;
+    }
+
     public function averageAllStudents()
     {
         $allUsers = User::all();
