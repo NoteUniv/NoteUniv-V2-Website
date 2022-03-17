@@ -11,9 +11,16 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                @foreach (Auth::user()->averageAllStudents() as $average)
-                    <ul class="bg-gray-50 px-4 sm:px-6">
-                        <li>{{ $average }}</li>
+                @php
+                    $user = Auth::user();
+                @endphp
+                @foreach ($user->averageAllStudents() as $data)
+                    <ul class="bg-gray-50 px-4 sm:px-6" @if ($data['student_id'] == $user->student_id) id="me" @endif>
+                        @if ($data['rank'])
+                            <li>
+                                {{ $data['rank'] }} {{ $data['student_id'] }} {{ $data['student_avg'] }}
+                            </li>
+                        @endif
                     </ul>
                 @endforeach
             </div>
