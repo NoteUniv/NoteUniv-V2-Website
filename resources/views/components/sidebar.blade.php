@@ -17,33 +17,38 @@
                     @svg(logo)
                 </div>
             </a>
-            <div class="relative">
-                <select name="semesters" id="semester-select" class="appearance-none bg-nu-secondary w-full text-white px-6 py-2 focus:outline-none">
-                    <option value="1">Semester 1</option>
-                    <option value="2">Semester 2</option>
-                    <option value="3">Semester 3</option>
-                    <option value="4">Semester 4</option>
-                    <option value="5">Semester 5</option>
-                    <option value="6">Semester 6</option>
-                </select>
-                <div class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white">
-                    @svg(chevron-down)
+            @if (!Auth::user()->is_admin)
+                <div class="relative">
+                    <select name="semesters" id="semester-select" class="appearance-none bg-nu-secondary w-full text-white px-6 py-2 focus:outline-none">
+                        <option value="1">Semester 1</option>
+                        <option value="2">Semester 2</option>
+                        <option value="3">Semester 3</option>
+                        <option value="4">Semester 4</option>
+                        <option value="5">Semester 5</option>
+                        <option value="6">Semester 6</option>
+                    </select>
+                    <div class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white">
+                        @svg(chevron-down)
+                    </div>
                 </div>
-            </div>
-            <div class="bg-nu-gray-100 w-full py-4 text-center">
-                <p class="mb-2">{{ __('Overall average') }}</p>
-                <div>
-                    <span class="text-grade text-2xl">{{ number_format(Auth::user()->overallAverage(), 2) }}</span>
-                    <span class="text-nu-gray-300">/ 20</span>
+                <div class="bg-nu-gray-100 w-full py-4 text-center">
+                    <p class="mb-2">{{ __('Overall average') }}</p>
+                    <div>
+                        <span class="text-grade text-2xl">{{ number_format(Auth::user()->overallAverage(), 2) }}</span>
+                        <span class="text-nu-gray-300">/ 20</span>
+                    </div>
                 </div>
-            </div>
+            @endif
             <nav class="flex-grow py-10 px-6 text-lg font-medium">
                 <ul class="flex flex-col gap-y-8">
                     @if (Auth::user()->is_admin)
                         <!-- Navigation Links -->
                         <li>
                             <x-nav-link href="{{ route('dashboard-admin') }}" :active="request()->routeIs('dashboard-admin')">
-                                {{ __('Admin Dashboard') }}
+                                <div class="w-3 mr-4 transform scale-150">
+                                    @svg(dashboard-icon)
+                                </div>
+                                <p class="text-sm">{{ __('Admin Dashboard') }}</p>
                             </x-nav-link>
                         </li>
                     @else
