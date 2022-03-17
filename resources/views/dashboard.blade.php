@@ -15,22 +15,17 @@
                     class="block xl:table w-full overflow-x-auto border-collapse border-l border-b border-r border-nu-gray-200">
                     <thead>
                         <tr class="h-12 bg-nu-primary text-sm text-white">
-                            <<<<<<< HEAD <th class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell"
+                            <th class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell"
                                 :class="{'!table-cell': isOpen}">{{ __('Date') }}</th>
-                                <th class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell overflow-hidden"
-                                    :class="{'!table-cell': isOpen}">{{ __('Subject') }}</th>
-                                =======
-                                <th class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell"
-                                    :class="{'!table-cell': isOpen}">{{ __('Date') }}</th>
-                                <th class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell"
-                                    :class="{'!table-cell': isOpen}">{{ __('Subject') }}</th>
-                                >>>>>>> front
-                                <th class="font-semibold px-4 text-left w-full whitespace-nowrap">
-                                    {{ __('Name of work') }}
-                                </th>
-                                <th class="font-semibold px-4 whitespace-nowrap">{{ __('My grade') }}</th>
-                                <th class="font-semibold px-4 whitespace-nowrap hidden md:table-cell"
-                                    :class="{'!table-cell': isOpen}">{{ __('Class average') }}</th>
+                            <th class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell overflow-hidden"
+                                :class="{'!table-cell': isOpen}">{{ __('Subject') }}</th>
+                            <th class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell"
+                                class="font-semibold px-4 text-left whitespace-nowrap hidden md:table-cell"
+                                :class="{'!table-cell': isOpen}">{{ __('Subject') }}</th>
+
+                            <th class="font-semibold px-4 whitespace-nowrap">{{ __('My grade') }}</th>
+                            <th class="font-semibold px-4 whitespace-nowrap hidden md:table-cell"
+                                :class="{'!table-cell': isOpen}">{{ __('Class average') }}</th>
                         </tr>
                     </thead>
                     <tbody>
