@@ -50,7 +50,7 @@
                                 <div class="w-3 mr-4 transform scale-150">
                                     @svg(dashboard-icon)
                                 </div>
-                                <p class="text-sm">{{ __('Admin Dashboard') }}</p>
+                                <p class="text-sm">{{ __('Admin dashboard') }}</p>
                             </x-nav-link>
                         </li>
                     @endif
