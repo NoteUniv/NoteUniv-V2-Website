@@ -28,29 +28,12 @@
                                 :class="{'!table-cell': isOpen}">{{ __('Class average') }}</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @php
-                            $user = Auth::user();
-                        @endphp
-                        @foreach ($user->lastGrades() as $data)
-                            <tr class="h-12 border-b border-nu-gray-200 text-sm">
-                                <td class="px-4 text-xs font-semibold hidden md:table-cell whitespace-nowrap"
-                                    :class="{'!table-cell': isOpen}">{{ $data['date'] }}</td>
-                                <td class="px-4 hidden md:table-cell" :class="{'!table-cell': isOpen}">
-                                    {{ Str::limit($data['subject_name'], 5) }}</td>
-                                <td class="px-4 overflow-ellipsis overflow-hidden">{{ $data['grade_name'] }}</td>
-                                <td class="px-4 text-center font-semibold text-nu-green">{{ $data['grade_value'] }}
-                                </td>
-                                <td class="px-4 text-center hidden md:table-cell" :class="{'!table-cell': isOpen}">
-                                    {{ $data['class_avg'] }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
+                    @php
+                        $user = Auth::user();
+                        $data = $user->lastGrades();
+                    @endphp
+                    @livewire('table-rows', ['data' => $data, 'template' => 'table.dashboard'])
                 </table>
-                <div
-                    class="h-10 border-l border-b border-r border-nu-gray-200 text-xl text-nu-gray-400 bg-nu-gray-100 text-center font-bold tracking-widest cursor-pointer transition-colors duration-200 hover:bg-gray-200 leading-8">
-                    ...
-                </div>
                 <div class="md:hidden mt-4">
                     <p class="text-xs text-nu-gray-400">{{ __('Some information are hidden on mobile devices.') }}
                     </p>

@@ -71,34 +71,8 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @foreach ($meccFiles as $file)
-                                <tr class="h-12 border-b border-nu-gray-200 text-sm">
-                                    <td class="px-4 text-xs font-semibold whitespace-nowrap">
-                                        {{ date('d/m/Y', explode('_', basename($file), 2)[0]) }}</td>
-                                    <td class="px-4">{{ explode('_', basename($file), 2)[1] }}</td>
-                                    <td class="px-4 flex gap-x-2 h-12 items-center justify-center">
-                                        <button
-                                            class="text-nu-secondary rounded-md p-2 transition-colors duration-200 hover:text-white hover:bg-nu-secondary">
-                                            @svg(download-icon)
-                                        </button>
-                                        <a href="{{ $file }}"
-                                            class="inline-block text-nu-secondary rounded-md p-2 transition-colors duration-200 hover:text-white hover:bg-nu-secondary">
-                                            @svg(upload-icon)
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
+                        @livewire('table-rows', ['data' => $meccFiles, 'template' => 'table.dashboard-admin'])
                     </table>
-                    <div
-                        class="h-10 border-l border-b border-r border-nu-gray-200 bg-nu-gray-100 text-center cursor-pointer transition-colors duration-200 hover:bg-gray-200">
-                        @if ($meccFiles)
-                            <span class="text-xl text-nu-gray-400 font-bold tracking-widest leading-8">...</span>
-                        @else
-                            <span class="leading-10 text-sm">{{ __('No files') }}</span>
-                        @endif
-                    </div>
                 </div>
                 <div class="pl-6 w-1/3 border-l border-nu-gray-200">
                     <a href="{{ url('mecc-template') }}"
@@ -191,34 +165,8 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @foreach ($gradeFiles as $file)
-                                <tr class="h-12 border-b border-nu-gray-200 text-sm">
-                                    <td class="px-4 text-xs font-semibold whitespace-nowrap">
-                                        {{ date('d/m/Y', explode('_', basename($file), 2)[0]) }}</td>
-                                    <td class="px-4">{{ explode('_', basename($file), 2)[1] }}</td>
-                                    <td class="px-4 flex gap-x-2 h-12 items-center justify-center">
-                                        <button
-                                            class="text-nu-secondary rounded-md p-2 transition-colors duration-200 hover:text-white hover:bg-nu-secondary">
-                                            @svg(download-icon)
-                                        </button>
-                                        <a href="{{ $file }}"
-                                            class="inline-block text-nu-secondary rounded-md p-2 transition-colors duration-200 hover:text-white hover:bg-nu-secondary">
-                                            @svg(upload-icon)
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
+                        @livewire('table-rows', ['data' => $gradeFiles, 'template' => 'table.dashboard-admin'])
                     </table>
-                    <div
-                        class="h-10 border-l border-b border-r border-nu-gray-200 bg-nu-gray-100 text-center cursor-pointer transition-colors duration-200 hover:bg-gray-200">
-                        @if ($gradeFiles)
-                            <span class="text-xl text-nu-gray-400 font-bold tracking-widest leading-8">...</span>
-                        @else
-                            <span class="leading-10 text-sm">{{ __('No files') }}</span>
-                        @endif
-                    </div>
                 </div>
                 <div class="pl-6 w-1/3 border-l border-nu-gray-200">
                     <a href="{{ url('grades-template') }}"
