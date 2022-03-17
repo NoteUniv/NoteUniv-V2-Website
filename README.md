@@ -1,64 +1,115 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<h1 align="center" style="font-size: 50px;">Welcome to NoteUniv V2 project 👋</h1>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Website](https://quentium.fr/+img/github/website_noteuniv_v2.svg)](https://noteuniv.lienhardt.etu.mmi-unistra.fr/)&nbsp;
+[![Donate](https://quentium.fr/+img/github/donate.svg)](https://www.paypal.me/erosya/1)&nbsp;
+[![Contributions](https://quentium.fr/+img/github/contributions.svg)](https://github.com/NoteUniv/NoteUniv-V2-Website/pulls)&nbsp;
+[![Tested on browsers](https://quentium.fr/+img/github/browsers.svg)](https://noteuniv.lienhardt.etu.mmi-unistra.fr/)&nbsp;
+[![License](https://quentium.fr/+img/github/cc_by_sa.svg)](https://github.com/NoteUniv/NoteUniv-V2-Website/blob/master/LICENSE)&nbsp;
+[![Size](https://img.shields.io/github/repo-size/NoteUniv/NoteUniv-V2-Website?label=Repo%20Size&color=4391BD&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAUCSURBVHhe7ZzdbhtFFMfPru3ECSFtYlqhVKK9IQ0Iil0JAilIhSTQPgHPwVWBB2hRVcFzcAG3CNIIJIgrxEeqctPSXvWioh/5aBJok6Zr5r/rTdeb2fjs7tjZmfXvZsdeS9H8dM6cc9aKqUePHjpjNa+5YPbiQtV27Evbjv3x/OeTS823U2E3r8bTlHdZLKeLduPy9PlfK96ddORC4NkL9ZqQNy+WFdvGlhvVou3MffRlfdT9QAqMF4jIcyxrTixHX3zhAM1OvU7PDw3gVo227Pm0kWj0GRhI2wrkTZ54mRCBj7ee0C9/Xqf1jUfilnV127Fmkp6JxgqMkuejSqKRKTx9sX5GyFsQS6k8UO4r0bsnJ5rpjDMxWWExTiAir+RY34rlYLFYoOorx3bJ81Eh0SiBfto2iAYgb3v7KdUXb9KmSNco0ko0RmD4zJt55zUaHhqktY3/6MrVm96HIkgj0QiBsoIx0N8vpByng8PPiRRuXyuTStS+CrertnGJW521jsCgvFKbgsElbiRqKzAs7wmjYHCJI1FLgbsKxtvPCsbPf1ynx5vdk6idQNmZVy57BQMS1/995J5h3ZKolcAPv7hy1nLsulhWxg6N0OQb4ztnXr+72WcSFxZvKEvnU9VxKrh/BxKdr707HtoIdCOP6BvRNrhN8omJl8i2WpuIoERO/8fBaTTo2o3b9NRxxCtr1bHsT707HoXmNdME0nbYnzDuLa/TkcMjVCy0bgGv8f79lXU3ao6OHWreiQ/k/XbtFt25vyJeQZ41O3du8nfvrkfm+8DwmYdWBdUWETYyPESn33rV+6BiOPJAplNYVjDiThhJ4MoDmY1Amby0TTKHOPJAJiMwKE/VhMEhrjyQuSISlocJI6pgqCSJPJApgeG0Rf8FeSgY/zx4SGOHRwlVWDVJ5YHMCJSdeaVSyY28u0trbnN8d0m9xDTyQCYE4juMgmN/L5YHwgXD7+t8ifeW15Slc1p5YN8FIvKKjv2DWLrfYUzVxqlPRF6QoESk84OVDTp2JHmDDFTIA/sqMJC2mZswuOxbHxg+87I2YXDZlz5QVjCyNmFw6XoEyuRltUnm0NUIDMrL+oTBpWtFJCwv6xMGl64IDKetDhMGl44LlJ15OkwYXDoqUOcJg0vHBCLydJ4wuHREYCBttZ0wuCjvA8Nnnq4TBhelTZisYOg6YXBRtiOZPN2bZA5KdhiUZ8qEwSV1EQnLM2XC4JJqh+G0NWnC4JJ4d7Izz6QJg0uineVhwuASe1eIvDxMGFxiCQykrfETBhd2Hxg+80yfMLiwmjVZwTB9wuDSducyeXlpkjnsaSIoL28TBpfIIhKWl7cJg4vURDht8zhhcNllQXbm5XHC4NJiYK+CEWyOVUvUVR7Y2f1e8nzCEpdWzZ0wuOwYEvIuiUsFU0N1Irra+v/MoqL/a5VHy3bD+UAneWDHwOmvfjzYv1nGjPvm0GCZ3js5QeVyn3ezA+geeT4tIdQtiabIA7tysNMSTZIHpIdYpySaJg9EVgHVEk2UByIFAlUSTZUH9hQI0ko0WR5oKxAklWi6PMASCOJKzIM8wBYIuBLzIg/EEgjaScyTPBBbIIiSmDd5IJFAEJZ4qnac/vr7dq7kgcQCgfsruFsWHoHV8PTGcX8aBE9VGjPffTa1iBemk0ogCEZiniLPJ/VXbD998v4q9TXOiOW8js/zevTQGaL/Af3ei59A3O7oAAAAAElFTkSuQmCC)](../../)&nbsp;
 
-## About Laravel
+# ✨ NoteUniv: Website
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+> #### NoteUniv V2 Website is a complete rework of the existing website, allowing more specific functionalities for both admins and students.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<p align="center"><img src="https://quentium.fr/+img/github/NoteUniv-V2-Website.png"></p>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 📥 Installation
 
-## Learning Laravel
+### Requirements
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   [PHP](https://www.php.net/downloads.php) >= 8.0
+-   [Composer](https://getcomposer.org/download/) => 2.0
+-   Git
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### ⚡️ Easy setup
 
-## Laravel Sponsors
+You can easily install the project with only one command:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```bash
+./setup.sh # On linux
+```
 
-### Premium Partners
+OR
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```bash
+start setup.bat # On windows
+```
 
-## Contributing
+### Running the project
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+To deploy the project, follow these steps:
 
-## Code of Conduct
+1. Clone the repository using git
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+git clone https://github.com/NoteUniv/NoteUniv-V2-Website.git
+cd NoteUniv-V2-Website/
+```
 
-## Security Vulnerabilities
+2. Install dependencies
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+composer install
+npm install
+```
 
-## License
+3. Copy the .env.example into .env and add your database credentials.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+4. ⚠️ You will need 2 template files for the application to work!
+
+[The MECC template to fill with specific subjects](https://raw.githubusercontent.com/NoteUniv/NoteUniv-Excel/main/mecc_template.xlsx)
+
+[The Grade template with a list of fillable options & students](https://raw.githubusercontent.com/NoteUniv/NoteUniv-Excel/main/grades_template.xlsx)
+
+Place them inside storage/app/private
+
+5. Execute the following commands:
+
+```bash
+php artisan key:generate
+php artisan storage:link
+php artisan migrate
+
+php artisan db:seed
+
+# Optionally set yourself as admin
+# create an account first #
+php artisan set-admin <your_student_id>
+```
+
+6. Build the assets
+
+```bash
+npm run dev # or yarn dev
+# OR
+npm run watch # or yarn watch
+```
+
+7. Finally start a php server or host it on a Apache/Nginx server
+
+```bash
+php artisan serve
+```
+
+8. Open http://127.0.0.1:8000 on your browser!
+
+## 🤝 Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change or create a new branch.\
+Please make sure to test your suggestions before committing.
+
+## 👤 Authors
+
+**Quentin L. & Solène G. & Eloi A.**
+
+-   Website NoteUniv: [noteuniv.lienhardt.etu.mmi-unistra.fr](https://noteuniv.lienhardt.etu.mmi-unistra.fr/)
+
+Please ✰ this repository if this project helped you!
+
+## 📖 License
+
+[CC BY-SA-4.0](https://choosealicense.com/licenses/cc-by-sa-4.0/)
+
+---
+
+_Made with_ ❤ _by NoteUniv team_
