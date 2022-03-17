@@ -73,6 +73,7 @@
     "Overall averages": "Moyennes générales",
     "Go to my rank": "Aller à ma position",
     "Remove me from the ranking": "Me désinscrire du classement",
+    "Show me in the ranking": "Me réinscrire dans le classement",
     "Show all details": "Afficher les détails",
     "Hide all details": "Masquer les détails",
     "Rank": "Rang",
@@ -101,6 +102,13 @@
     "Teacher": "Enseignant",
     "Work type": "Type de d'examen",
     "Exam type": "Type de note",
+
+    "404 error": "Erreur 404",
+    "Oops! The page you requested is currently on vacation.": "Oups ! La page que vous avez demandez est actuellement en congé.",
+    "Did you know? People chose to name this color": "Le saviez-vous ? Des gens ont choisi de nommer cette couleur",
+    "Want to name a color?": "Vous voulez aussi nommer une couleur ?",
+    "Click here!": "Cliquez ici !",
+    "Back to home page": "Retour à la page d'accueil",
 
     "": ""
 }
