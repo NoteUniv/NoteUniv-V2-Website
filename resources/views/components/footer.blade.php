@@ -8,8 +8,13 @@
                 <a href="{{ route('accessibility') }}" class="hover:underline">{{ __('Accessibility') }}</a>
             </nav>
             <div class="flex gap-x-4 text-sm">
-                <a href="#" class="p-1.5 bg-white text-nu-primary">FR</a>
-                <a href="#" class="p-1.5 transition-colors duration-200 hover:bg-white hover:text-nu-primary">EN</a>
+                @foreach (Config::get('languages') as $lang => $language)
+                    @if ($lang == App::getLocale())
+                        <a href="{{ route('lang.switch', $lang) }}" class="p-1.5 bg-white text-nu-primary">{{ $language }}</a>
+                    @else
+                        <a href="{{ route('lang.switch', $lang) }}" class="p-1.5 transition-colors duration-200 hover:bg-white hover:text-nu-primary">{{ $language }}</a>
+                    @endif
+                @endforeach
             </div>
         </div>
         <img src="{{ asset('svg/logo-iut.svg') }}" alt="IUT de Haguenau" class="mt-10 md:mt-12 xl:mt-0 w-48">
