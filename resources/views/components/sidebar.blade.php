@@ -12,11 +12,19 @@
                     </div>
                 </div>
             </button>
-            <a href="#" class="bg-nu-primary w-full aspect-square flex items-center justify-center">
-                <div class="w-2/3 text-white">
-                    @svg(logo)
-                </div>
-            </a>
+            @if (Auth::user()->is_admin)
+                <a href="{{ route('dashboard-admin') }}" class="bg-nu-primary w-full aspect-square flex items-center justify-center">
+                    <div class="w-2/3 text-white">
+                        @svg(logo)
+                    </div>
+                </a>
+            @else
+                <a href="{{ route('dashboard') }}" class="bg-nu-primary w-full aspect-square flex items-center justify-center">
+                    <div class="w-2/3 text-white">
+                        @svg(logo)
+                    </div>
+                </a>
+            @endif
             @if (Auth::user()->is_student)
                 <div class="relative">
                     <select name="semesters" id="semester-select" class="appearance-none bg-nu-secondary w-full text-white px-6 py-2 focus:outline-none">
@@ -50,7 +58,7 @@
                                 <div class="w-3 mr-4 transform scale-150">
                                     @svg(dashboard-icon)
                                 </div>
-                                <p class="text-sm">{{ __('Admin Dashboard') }}</p>
+                                <p class="text-sm">{{ __('Admin dashboard') }}</p>
                             </x-nav-link>
                         </li>
                     @endif

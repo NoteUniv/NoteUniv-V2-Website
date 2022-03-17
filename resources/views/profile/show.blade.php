@@ -3,6 +3,26 @@
 
 <x-app-layout>
     <div>
+        @if (Auth::user()->is_student)
+            <x-jet-form-section submit="updatePassword">
+                <x-slot name="title">
+                    {{ __('Student ID') }}
+                </x-slot>
+
+                <x-slot name="description">
+                    {{ __('Update your student ID by making a request with the contact form.') }}
+                </x-slot>
+
+                <x-slot name="form">
+                    <div class="col-span-6 sm:col-span-4">
+                        {{ Auth::user()->student_id }}
+                    </div>
+                </x-slot>
+            </x-jet-form-section>
+
+            <x-jet-section-border />
+        @endif
+
         @if (Laravel\Fortify\Features::canUpdateProfileInformation())
             @livewire('profile.update-profile-information-form')
 

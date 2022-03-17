@@ -26,10 +26,9 @@
                         <x-jet-label for="email" class="block mb-1.5" value="{{ __('Email Unistra') }}" />
                         <div class="flex row-reverse h-10">
                             <x-jet-input id="email" type="email" name="email" :value="old('email')" required autofocus
-                                placeholder="{{ __('Your unistra email') }}" pattern=".+@etu\.unistra\.fr"
+                                placeholder="{{ __('Your unistra email') }}" pattern=".+@(etu\.)?unistra\.fr"
                                 class="input py-2 pl-14 pr-4 outline-2 outline-nu-primary focus:outline placeholder:text-nu-gray-300 rounded-md" />
-                            <div
-                                class="absolute w-10 h-10 bg-nu-gray-200 flex-shrink-0 flex rounded-l-md pointer-events-none">
+                            <div class="absolute w-10 h-10 bg-nu-gray-200 flex-shrink-0 flex rounded-l-md">
                                 <span class="m-auto w-5 h-5 text-white">
                                     @svg(mail-icon)
                                 </span>
