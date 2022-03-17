@@ -78,6 +78,16 @@ class User extends Authenticatable
     public function getDataAttribute()
     {
         $lastGrade = $this->userGrades->sortByDesc('grade_id')->first();
+
+        if (!$lastGrade) {
+            return [
+                'current_semester' => 1,
+                'max_semester' => 2,
+                'promo' => '',
+                'year' => date('Y'),
+            ];
+        }
+
         $lastGradeMecc = $lastGrade->grade->mecc;
 
         $maxSemester = Mecc::where('year', $lastGradeMecc->year)->max('semester');
@@ -97,12 +107,12 @@ class User extends Authenticatable
 
     public $grades;
 
-    public function grades($full = false)
+    public function grades()
     {
         $allGrades = Grade::all();
         $allMecc = Mecc::all();
 
-        $grades = $this->userGrades->map(function ($userGrade) use ($full, $allGrades, $allMecc) {
+        $grades = $this->userGrades->map(function ($userGrade) use ($allGrades, $allMecc) {
             $grade = $allGrades->where('id', $userGrade->grade_id)->first();
             $grade->grade_value = $userGrade->grade_value;
             $mecc = $allMecc->where('id', $grade->mecc_id)->first();
@@ -153,6 +163,10 @@ class User extends Authenticatable
             $this->grades = $this->grades();
         }
 
+        if (count($this->grades) === 0) {
+            return 20;
+        }
+
         $coefPerSubject = [];
         foreach ($this->grades as $grade) {
             if (!array_key_exists($grade['mecc_id'], $coefPerSubject)) {
@@ -179,7 +193,7 @@ class User extends Authenticatable
     {
         $usersGrades = UserGrade::all()->sortByDesc('exam_date');
 
-        foreach ($this->grades(true) as $data) {
+        foreach ($this->grades() as $data) {
             $lastGrades[$data['grade']->id] = [
                 'date' => $data['grade']->exam_date,
                 'subject_name' => $data['mecc']->subject_code ?? $data['mecc']->subject_name,
@@ -190,7 +204,7 @@ class User extends Authenticatable
             ];
         }
 
-        return $lastGrades;
+        return $lastGrades ?? [];
     }
 
     public function averageAllStudents()
@@ -204,6 +218,10 @@ class User extends Authenticatable
             ->where('mecc.promo', $this->data['promo'])
             ->groupBy('student_id')
             ->get();
+
+        if ($allStudents->count() === 0) {
+            return [];
+        }
 
         foreach ($allStudents as $student) {
             // $existingStudent = $allUsers->where('student_id', $student->student_id)->first();
@@ -257,7 +275,7 @@ class User extends Authenticatable
     {
         $allAverages = $this->averageAllStudents();
 
-        $rank = null;
+        $rank = 0;
         foreach ($allAverages as $key => $data) {
             if ($data['student_id'] === $this->student_id) {
                 $rank = $key + 1;
@@ -272,7 +290,7 @@ class User extends Authenticatable
         $usersGrades = UserGrade::all();
 
         $groupedGrades = [];
-        foreach ($this->grades(true) as $data) {
+        foreach ($this->grades() as $data) {
             $groupedGrades[$data['mecc']->ue][$data['mecc']->id][] = [
                 'gradeValue' => $data['userGrade']->grade_value,
                 'gradeMin' => $usersGrades->where('grade_id', $data['grade']->id)->min('grade_value'),
