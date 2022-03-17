@@ -7,6 +7,7 @@
         <div class="relative" x-data="{ isOpen: false}">
             <div class="flex items-center cursor-pointer py-2" @mouseEnter="isOpen = true" @mouseLeave="isOpen = false">
                 @if (Auth::user()->is_student)
+                    <p class="hidden md:block text-md font-semibold mr-4 text-nu-primary">{{ Auth::user()->email }}</p>
                     <button class="bg-white p-3 lg:py-4 shadow-drop rounded-md" @keydown.enter="isOpen = true" @keydown.escape="isOpen = false">
                         <div class="hidden lg:block transform transition-transform duration-200 text-nu-primary" :class="{'-rotate-180':isOpen}">
                             @svg(chevron-down)
@@ -42,7 +43,7 @@
                     <form method="POST" action="{{ route('logout') }}" class="flex items-center">
                         @csrf
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" class="inline-block flex items-center">
-                            <p class="hidden md:block text-md font-semibold mr-4 text-nu-primary">{{ Auth::user()->is_student ? Auth::user()->email : __('Log out') }}</p>
+                            <p class="hidden md:block text-md font-semibold mr-4 text-nu-primary">{{ __('Log out') }}</p>
                             <div class="text-nu-primary bg-white shadow-drop rounded-md p-3">
                                 @svg(logout-icon)
                             </div>
