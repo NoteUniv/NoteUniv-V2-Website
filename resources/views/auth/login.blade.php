@@ -16,18 +16,14 @@
                     </div>
                 @endif
 
-                <form method="POST" action="{{ route('login') }}"
-                    class="flex flex-col gap-y-6 bg-white shadow-drop p-6 text-sm w-[90vw] max-w-[450px] xl:min-w-[350px] xl:w-[35vw] xl:max-w-[550px]">
+                <form method="POST" action="{{ route('login') }}" class="flex flex-col gap-y-6 bg-white shadow-drop p-6 text-sm w-[90vw] max-w-[450px] xl:min-w-[350px] xl:w-[35vw] xl:max-w-[550px]">
                     @csrf
 
                     <div>
                         <x-jet-label for="email" class="block mb-1.5" value="{{ __('Email Unistra') }}" />
                         <div class="flex row-reverse h-10">
-                            <x-jet-input id="email" type="email" name="email" :value="old('email')" required autofocus
-                                placeholder="{{ __('Your unistra email') }}" pattern=".+@etu\.unistra\.fr"
-                                class="input py-2 pl-14 pr-4 outline-2 outline-nu-primary focus:outline placeholder:text-nu-gray-300 rounded-md" />
-                            <div
-                                class="absolute w-10 h-10 bg-nu-gray-200 flex-shrink-0 flex rounded-l-md pointer-events-none">
+                            <x-jet-input id="email" type="email" name="email" :value="old('email')" required autofocus placeholder="{{ __('Your unistra email') }}" pattern=".+@(etu\.)?unistra\.fr" class="input py-2 pl-14 pr-4 outline-2 outline-nu-primary focus:outline placeholder:text-nu-gray-300 rounded-md" />
+                            <div class="absolute w-10 h-10 bg-nu-gray-200 flex-shrink-0 flex rounded-l-md">
                                 <span class="m-auto w-5 h-5 text-white">
                                     @svg(mail-icon)
                                 </span>
@@ -45,11 +41,8 @@
                             @endif
                         </div>
                         <div class="flex h-10">
-                            <x-jet-input id="password" type="password" name="password" required
-                                autocomplete="current-password" placeholder="{{ __('Your password') }}"
-                                class="input py-2 pl-14 pr-4 outline-2 outline-nu-primary focus:outline placeholder:text-nu-gray-300 rounded-md" />
-                            <div
-                                class="absolute w-10 h-10 bg-nu-gray-200 flex-shrink-0 flex rounded-l-md pointer-events-none">
+                            <x-jet-input id="password" type="password" name="password" required autocomplete="current-password" placeholder="{{ __('Your password') }}" class="input py-2 pl-14 pr-4 outline-2 outline-nu-primary focus:outline placeholder:text-nu-gray-300 rounded-md" />
+                            <div class="absolute w-10 h-10 bg-nu-gray-200 flex-shrink-0 flex rounded-l-md pointer-events-none">
                                 <span class="m-auto w-5 h-5 text-white">
                                     @svg(password-icon)
                                 </span>
@@ -77,9 +70,7 @@
                 </div>
             </div>
         </div>
-        <div x-cloak
-            class="absolute top-0 w-full xl:w-1/2 h-screen bg-nu-primary flex justify-center transform translate-x-full transition-transform duration-500"
-            :class="{'translate-x-0': isOpen}" @click="isOpen = false">
+        <div x-cloak class="absolute top-0 w-full xl:w-1/2 h-screen bg-nu-primary flex justify-center transform translate-x-full transition-transform duration-500" :class="{'translate-x-0': isOpen}" @click="isOpen = false">
             <div class="relative w-full h-full">
                 <img src="../images/login-page-top.svg" alt="" class="absolute top-10 left-0 w-[20vw]">
                 <img src="../images/login-page-bg.svg" alt="" class="m-auto h-full object-cover">
