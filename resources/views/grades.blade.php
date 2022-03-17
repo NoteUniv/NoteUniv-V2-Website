@@ -12,7 +12,6 @@
         @php
             $data = Auth::user()->groupGrades();
             ksort($data);
-            // dd($data);
         @endphp
         @foreach ($data as $ue_id => $subjects)
             <div class="box" x-data="{isOpen: true}">
@@ -24,9 +23,9 @@
                     </span>
                 </div>
                 <div x-cloak x-show="isOpen" class="flex flex-col gap-y-6 px-4 pb-4 pt-2 xl:px-6 xl:pb-6 xl:pt-2">
-                    @foreach ($subjects as $subject_id => $temp)
+                    @foreach ($subjects['ueData'] as $subject_id => $temp_subject)
                         @php
-                            $subject = $temp[0];
+                            $subject = $temp_subject[0];
                         @endphp
                         <div x-data="{isOpen: false, desktopVersion: false}">
                             <div class="relative" :class="{'overflow-x-auto': isOpen}">
@@ -76,21 +75,35 @@
                                                             <tr class="h-12 text-sm">
                                                                 <td class="border border-nu-gray-200 px-4 max-w-0 xl:max-w-none overflow-hidden xl:overflow-visible overflow-ellipsis"
                                                                     :class="{'max-w-none overflow-visible': desktopVersion}">
-                                                                    <span>{{ $grade['name'] }}</span>
-                                                                    <button
-                                                                        class="relative ml-2 w-5 leading-5 bg-nu-secondary rounded-full cursor-pointer hidden xl:inline-block"
-                                                                        :class="{'!inline-block':desktopVersion}"
-                                                                        x-data="{isInfoOpen: false}"
-                                                                        @click="isInfoOpen = true">
-                                                                        <span
-                                                                            class="text-white font-light text-xs text-center">i</span>
-                                                                        <div class="absolute w-max max-w-[180px] -right-2 top-1/2 translate-x-full -translate-y-1/2 text-sm text-nu-primary bg-white rounded-md border-2 border-nu-secondary p-4"
-                                                                            x-show="isInfoOpen" @click.stop
-                                                                            @click="isInfoOpen = false"
-                                                                            @click.outside="isInfoOpen = false">
-                                                                            Content for modal
-                                                                        </div>
-                                                                    </button>
+                                                                    <div class="flex justify-between">
+                                                                        <span>{{ $grade['name'] }}</span>
+                                                                        <button
+                                                                            class="relative ml-2 w-5 leading-5 bg-nu-secondary rounded-full cursor-pointer hidden xl:inline-block"
+                                                                            :class="{'!inline-block':desktopVersion}"
+                                                                            x-data="{isInfoOpen: false}"
+                                                                            @click="isInfoOpen = true">
+                                                                            <span
+                                                                                class="text-white font-light text-xs text-center">i</span>
+                                                                            <div class="absolute z-10 w-max -right-2 top-1/2 translate-x-full -translate-y-1/2 text-sm text-left text-nu-primary bg-white rounded-md border-2 border-nu-secondary p-4"
+                                                                                x-show="isInfoOpen" @click.stop
+                                                                                @click="isInfoOpen = false"
+                                                                                @click.outside="isInfoOpen = false">
+                                                                                <p><span class="font-semibold">{{ __('Teacher') }}
+                                                                                        :</span>
+                                                                                    {{ $grade['teacher'] }}</p>
+                                                                                <p><span class="font-semibold">{{ __('Date') }}
+                                                                                        :</span>
+                                                                                    {{ date('d/m/Y', strtotime($grade['date'])) }}
+                                                                                </p>
+                                                                                <p><span class="font-semibold">{{ __('Work type') }}
+                                                                                        :</span>
+                                                                                    {{ $grade['type'] }}</p>
+                                                                                <p><span class="font-semibold">{{ __('Exam type') }}
+                                                                                        :</span>
+                                                                                    {{ $grade['exam'] }}</p>
+                                                                            </div>
+                                                                        </button>
+                                                                    </div>
                                                                 </td>
                                                                 <td
                                                                     class="border border-nu-gray-200 text-center text-lg px-4 font-semibold text-grade">
@@ -171,7 +184,8 @@
                         @foreach ($data as $ue_id => $subjects)
                             <tr class="h-12">
                                 <td class="border border-nu-gray-200 px-4">UE{{ $ue_id }}</td>
-                                <td class="border border-nu-gray-200 px-4 text-center font-semibold text-grade">18</td>
+                                <td class="border border-nu-gray-200 px-4 text-center font-semibold text-grade">
+                                    {{ number_format($subjects['ueAvg'], 2) }}</td>
                             </tr>
                         @endforeach
                     </tbody>
