@@ -74,3 +74,7 @@ Route::middleware(['auth:sanctum', 'verified', 'admin'])
 Route::get('/accessibility', function () {
     return view('accessibility');
 })->name('accessibility');
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');

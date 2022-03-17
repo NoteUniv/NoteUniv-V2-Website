@@ -73,7 +73,7 @@
                     <li class="list-decimal"><a href="{{ route('grades') }}">Notes & moyennes (si étudiant)</a></li>
                     <li class="list-decimal"><a href="{{ route('ranking') }}">Classement (si étudiant)</a></li>
                     <li class="list-decimal"><a href="{{ route('profile.show') }}">Paramètres utilisateur</a></li>
-                    {{-- <li class="list-decimal"><a href="{{ route('contact') }}">Nous contacter</a></li> --}}
+                    <li class="list-decimal"><a href="{{ route('contact') }}">Nous contacter</a></li>
                 </ol>
 
                 <h3 class="text-3xl mt-10">Retour d’information et contact</h3>
@@ -84,7 +84,7 @@
                     pour être orienté vers une alternative accessible ou obtenir le contenu sous une autre forme.</p>
 
                 <ul class="pl-5">
-                    <li class="list-disc"><a href="#">Envoyer un message</a></li>
+                    <li class="list-disc"><a href="{{ route('contact') }}">Envoyer un message</a></li>
                 </ul>
 
                 <h3 class="text-3xl mt-10">Voies de recours</h3>
