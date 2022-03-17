@@ -1,8 +1,10 @@
 <x-guest-layout>
-    <div x-data="{isOpen: false}" class="relative flex w-full">
+    <div x-data="{isOpen: localStorage.getItem('first_login') ? false : true}"
+        x-init="setTimeout(() => {let f = localStorage.getItem('first_login'); if(f) return; localStorage.setItem('first_login', true), isOpen = false}, 1500)"
+        class="relative flex w-full h-screen overflow-hidden">
         <div class='relative w-full xl:w-1/2 flex h-screen text-nu-primary'>
             <p class="absolute top-[5vw] left-[5vw] xl:hidden" @click="isOpen = true">
-                {{ __('What is') }} <span class="text-nu-secondary font-semibold">NoteUniv ?</span>
+                {{ __('About') }} <span class="text-nu-secondary font-semibold">NoteUniv</span>
             </p>
             <div class="m-auto flex flex-col items-center gap-y-12 md:gap-y-16 xl:gap-y-10">
                 <div class="flex">
@@ -78,14 +80,15 @@
             </div>
         </div>
         <div x-cloak
-            class="absolute top-0 w-full xl:w-1/2 h-screen bg-nu-primary flex justify-center transform translate-x-full transition-transform duration-500"
+            class="absolute top-0 w-full xl:w-1/2 h-screen bg-nu-primary flex justify-center transform translate-x-full xl:!translate-x-full transition-transform duration-500"
             :class="{'translate-x-0': isOpen}" @click="isOpen = false">
             <div class="relative w-full h-full">
-                <img src="../images/login-page-top.svg" alt="" class="absolute top-10 left-0 w-[20vw]">
+                <img src="../images/login-page-top.svg" alt="" class="absolute top-10 left-0 w-[35vh] xl:w-[20vw]">
                 <img src="../images/login-page-bg.svg" alt="" class="m-auto h-full object-cover">
-                <img src="../images/login-page-bottom.svg" alt="" class="absolute bottom-10 right-0 w-[30vw]">
-                <div class="absolute top-[5vw] left-[5vw] h-8 w-8 text-white transform -rotate-90 xl:hidden">
-                    @svg(chevron-down)
+                <img src="../images/login-page-bottom.svg" alt=""
+                    class="absolute bottom-10 right-0 w-[50vh] xl:w-[30vw]">
+                <div class="absolute top-[5vw] left-[5vw] h-8 w-8 text-white transform -rotate-45 xl:hidden">
+                    @svg(plus-icon)
                 </div>
             </div>
         </div>
