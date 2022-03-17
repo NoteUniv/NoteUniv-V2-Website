@@ -86,10 +86,16 @@
     "MECC template": "Fichier modèle MECC",
     "Upload a file": "Ajouter un fichier",
 
+    "About": "A propos de",
+    "Grades template": "Fichier modèle note",
+    "Grades": "Notes",
+    "No files": "Aucun fichier",
     "Your message will be sent directly to the site administrators, i.e. to the grade managers of the IUT de Haguenau as well as to the site developers.": "Votre message sera directement envoyé aux administrateur du site, soit les gestionnaires de notes de l'IUT de Haguenau ainsi que les développeurs du site.",
     "Object": "Objet",
     "Message": "Message",
     "Send": "Envoyer",
     "Back to dashboard": "Retour au tableau de bord",
-    "Back to Admin dashboard": "Retour au panel administrateur"
+    "Back to Admin dashboard": "Retour au panel administrateur",
+
+    "": ""
 }

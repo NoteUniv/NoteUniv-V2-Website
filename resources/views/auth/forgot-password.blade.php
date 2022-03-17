@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div class="flex flex-col items-center justify-center gap-y-12 md:gap-y-16 xl:gap-y-10 py-8 min-h-screen">
         <div class="flex">
-            <h1 class="text-4xl w-fit font-bold tracking-wide">{{ __('Forgot Password') }}</h1>
+            <h1 class="text-4xl text-center w-fit font-bold tracking-wide">{{ __('Forgot Password') }}</h1>
         </div>
         <x-jet-validation-errors class="mb-4" />
 
