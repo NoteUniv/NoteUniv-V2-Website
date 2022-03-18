@@ -32,7 +32,7 @@ You can easily install the project with only one command:
 OR
 
 ```bash
-start setup.bat # On windows
+setup.bat # On windows
 ```
 
 ### Running the project
