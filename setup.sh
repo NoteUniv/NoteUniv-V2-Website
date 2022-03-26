@@ -10,8 +10,8 @@ read
 
 mkdir -p storage/app/private/
 
-wget https://raw.githubusercontent.com/NoteUniv/NoteUniv-Excel/main/mecc_template.xlsx -o storage/app/private/mecc_template.xlsx
-wget https://raw.githubusercontent.com/NoteUniv/NoteUniv-Excel/main/grades_template.xlsx -o storage/app/private/grades_template.xlsx
+wget https://raw.githubusercontent.com/NoteUniv/NoteUniv-Excel/main/mecc_template.xlsx -O storage/app/private/mecc_template.xlsx
+wget https://raw.githubusercontent.com/NoteUniv/NoteUniv-Excel/main/grades_template.xlsx -O storage/app/private/grades_template.xlsx
 
 php artisan key:generate
 php artisan storage:link
