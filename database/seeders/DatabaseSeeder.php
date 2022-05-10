@@ -28,10 +28,10 @@ class DatabaseSeeder extends Seeder
         Mecc::truncate();
 
         User::create([
-            'email' => 'bollender@unistra.fr',
+            'email' => 'admin@unistra.fr',
             'is_admin' => true,
             'is_ranked' => false,
-            'password' => Hash::make('bollender'),
+            'password' => Hash::make('admin'),
         ]);
         User::factory(10)->unverified()->create();
 
