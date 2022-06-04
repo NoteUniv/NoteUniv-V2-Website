@@ -191,7 +191,7 @@ class User extends Authenticatable
 
     public function lastGrades()
     {
-        $usersGrades = UserGrade::all()->sortByDesc('exam_date');
+        $usersGrades = UserGrade::all();
 
         foreach ($this->grades() as $data) {
             $lastGrades[$data['grade']->id] = [
@@ -203,6 +203,10 @@ class User extends Authenticatable
                 'class_avg' => $usersGrades->where('grade_id', $data['grade']->id)->avg('grade_value')
             ];
         }
+
+        usort($lastGrades, function ($a, $b) {
+            return $b['date'] <=> $a['date'];
+        });
 
         return $lastGrades ?? [];
     }
