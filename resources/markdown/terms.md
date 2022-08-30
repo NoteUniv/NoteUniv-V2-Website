@@ -3,12 +3,12 @@
 ## Article 1 : Objet
 
 Les présentes CGU ou Conditions Générales d’Utilisation encadrent juridiquement l’utilisation des services du site NoteUniv (ci-après dénommé « le site »).
-Constituant le contrat entre l'IUT de Haguenau, l’Utilisateur, l’accès au site doit être précédé de l’acceptation de ces CGU. L’accès à cette plateforme signifie l’acceptation des présentes CGU.
+Constituant le contrat entre l’IUT de Haguenau, l’Utilisateur, l’accès au site doit être précédé de l’acceptation de ces CGU. L’accès à cette plateforme signifie l’acceptation des présentes CGU.
 
 ## Article 2 : Mentions légales
 
-L’édition du site NoteUniv est assurée par l'IUT de Haguenau, situé au 30 Rue du Maire André Traband, 67500 Haguenau, France Métropolitaine.
-L’hébergeur du site [noteuniv.lienhardt.etu.unistra-mmi.fr](https://noteuniv.lienhardt.etu.mmi-unistra.fr/) est la société OVH, sise au 2 rue Kellermann, 59100 Roubaix, France.
+L’édition du site NoteUniv est assurée par l’IUT de Haguenau, situé au 30 Rue du Maire André Traband, 67500 Haguenau, France Métropolitaine.
+L’hébergeur du site [beta.noteuniv.fr](https://beta.noteuniv.fr/) est la société OVH, sise au 2 rue Kellermann, 59100 Roubaix, France.
 
 ## Article 3 : Accès au site
 

@@ -13,7 +13,7 @@
                     applications mobiles et mobilier urbain numérique) conformément à l’article 47 de la loi n°2005-102
                     du 11 février 2005.</p>
 
-                <p class="my-3">Cette déclaration d’accessibilité s’applique à <a href="{{ route('login') }}">https://noteuniv.lienhardt.etu.mmi-unistra.fr/</a>.</p>
+                <p class="my-3">Cette déclaration d’accessibilité s’applique à <a href="{{ route('login') }}">https://beta.noteuniv.fr/</a>.</p>
                 <h3 class="text-3xl mt-10">État de conformité</h3>
 
                 <p class="my-3">NoteUniv est totalement en grande partie conforme avec le référentiel général

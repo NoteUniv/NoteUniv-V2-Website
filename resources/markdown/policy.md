@@ -12,5 +12,5 @@ Suivant la loi Informatique et Libertés en date du 6 janvier 1978, articles 39 
 
 Lors des visites sur le site, l’installation automatique d’un cookie sur le logiciel de navigation de l’Utilisateur peut survenir.
 Les cookies correspondent à de petits fichiers déposés temporairement sur le disque dur de l’ordinateur de l’Utilisateur. Ces cookies sont nécessaires pour assurer l’accessibilité et la navigation sur le site. Ces fichiers ne comportent pas d’informations personnelles et ne peuvent pas être utilisés pour l’identification d’une personne.
-L’information présente dans les cookies est utilisée pour améliorer les performances de navigation sur le site noteuniv.lienhardt.etu.unistra-mmi.fr.
+L’information présente dans les cookies est utilisée pour améliorer les performances de navigation sur le site [beta.noteuniv.fr](https://beta.noteuniv.fr/).
 En naviguant sur le site, l’Utilisateur accepte les cookies. Leur désactivation peut s’effectuer via les paramètres du logiciel de navigation.
