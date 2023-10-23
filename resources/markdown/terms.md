@@ -23,7 +23,7 @@ Pour des raisons de maintenance ou autres, l’accès au site peut être interro
 
 ## Article 4 : Politique de confidentialité
 
-Voir la page [Confidentialité](/terms).
+Voir la page [Confidentialité](/terms-of-service).
 
 ## Article 5 : Propriété intellectuelle
 
