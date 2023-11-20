@@ -1,12 +1,33 @@
 {
-    "name": "laravel/laravel",
+    "name": "noteuniv/noteuniv-v2",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Check your latest grades as well as a recap of your semesters",
     "keywords": [
-        "framework",
-        "laravel"
+        "students",
+        "php",
+        "laravel",
+        "dashboard",
+        "grades",
+        "unistra",
+        "haguenau"
     ],
-    "license": "MIT",
+    "authors": [
+        {
+            "name": "Quentin Lienhardt",
+            "email": "pro@quentium.fr",
+            "homepage": "https://quentium.fr/",
+            "role": "Developer (backend)"
+        },
+        {
+            "name": "Éloi Antz",
+            "role": "Developer (frontend)"
+        },
+        {
+            "name": "Solène Guingand",
+            "role": "Designer (db / model)"
+        }
+    ],
+    "license": "CC-BY-SA-4.0",
     "require": {
         "php": "^8.0",
         "guzzlehttp/guzzle": "^7.4",

@@ -1,5 +1,7 @@
 {
-    "private": true,
+    "name": "noteuniv-v2",
+    "version": "1.0.0",
+    "description": "Check your latest grades as well as a recap of your semesters",
     "scripts": {
         "start": "concurrently \"php artisan serve\" \"npm run watch\"",
         "dev": "npm run development",
@@ -10,6 +12,8 @@
         "prod": "npm run production",
         "production": "mix --production"
     },
+    "author": "Noteuniv team",
+    "license": "CC-BY-SA-4.0",
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.0",
         "@tailwindcss/typography": "^0.5.2",
