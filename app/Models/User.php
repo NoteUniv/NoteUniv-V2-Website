@@ -260,7 +260,7 @@ class User extends Authenticatable
         }
 
         usort($allAverages, function ($a, $b) {
-            return $a['student_avg'] < $b['student_avg'];
+            return $b['student_avg'] <=> $a['student_avg'];
         });
 
         foreach ($allAverages as $key => $data) {
