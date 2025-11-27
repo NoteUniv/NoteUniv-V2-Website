@@ -28,6 +28,7 @@ class User extends Authenticatable
         'email',
         'password',
         'email_notifications',
+        'is_ranked',
     ];
 
     /**
