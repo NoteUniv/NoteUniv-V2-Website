@@ -17,7 +17,7 @@
             </button>
         </div>
         <div class="relative w-max flex-grow-0">
-            <select name="semesters" id="semester-select"
+            <select name="semesters" id="subject-select"
                 class="appearance-none bg-white text-nu-secondary pl-4 pr-10 py-2 text-xs rounded-md border-none">
                 <option value="1">{{ __('Select a subject') }}</option>
                 <option value="2">Subject 1</option>

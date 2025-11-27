@@ -22,7 +22,7 @@
                                 </button>
                             </div>
                             <div class="relative">
-                                <select name="semesters" id="semester-select" class="appearance-none bg-nu-gray-100 text-nu-secondary pl-4 pr-10 py-2 text-xs rounded-md border-none">
+                                <select name="semesters" id="promo-select" class="appearance-none bg-nu-gray-100 text-nu-secondary pl-4 pr-10 py-2 text-xs rounded-md border-none">
                                     <option value="1">{{ __('Select a promo') }}</option>
                                     <option value="2">Promo 1</option>
                                     <option value="3">Promo 2</option>
@@ -108,7 +108,7 @@
                                 </button>
                             </div>
                             <div class="relative">
-                                <select name="semesters" id="semester-select" class="appearance-none bg-nu-gray-100 text-nu-secondary pl-4 pr-10 py-2 text-xs rounded-md border-none">
+                                <select name="semesters" id="promo-select" class="appearance-none bg-nu-gray-100 text-nu-secondary pl-4 pr-10 py-2 text-xs rounded-md border-none">
                                     <option value="1">{{ __('Select a promo') }}</option>
                                     <option value="2">Promo 1</option>
                                     <option value="3">Promo 2</option>
