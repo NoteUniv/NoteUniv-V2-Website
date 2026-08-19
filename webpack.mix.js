@@ -1,5 +1,5 @@
-const mix = require('laravel-mix');
-const tailwindcss = require('tailwindcss');
+const mix = require("laravel-mix");
+const tailwindcss = require("tailwindcss");
 
 /*
  |--------------------------------------------------------------------------
@@ -12,16 +12,16 @@ const tailwindcss = require('tailwindcss');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .extract(['lodash', 'axios', 'alpinejs'])
-    .sass('resources/scss/app.scss', 'public/css')
+mix.js("resources/js/app.js", "public/js")
+    .extract(["lodash", "axios", "alpinejs"])
+    .sass("resources/scss/app.scss", "public/css")
     .options({
-        postCss: [ tailwindcss('./tailwind.config.js') ],
-        autoprefixer: true,
+        postCss: [tailwindcss("./tailwind.config.js")],
+        autoprefixer: {},
         terser: {
             extractComments: false,
-        }
-    })
+        },
+    });
 
 if (mix.inProduction()) {
     mix.version();
